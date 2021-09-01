@@ -90,7 +90,12 @@
                   <tbody>
                     <tr>
                       <td><?php echo $pla2['IdPagamento'] ?></td>
-                      <td><?php echo $pla2['data_pagamento'] ?></td>
+                        <td>
+                          <?php 
+                                $dataPag = $pla2['data_pagamento'];
+                                echo date('d/m/Y H:i:s', strtotime($dataPag));
+                            ?>
+                        </td>
                       <td><?php echo $pla2['formaPag'] ?></td>
                       <td><span class="tag tag-success"><?php echo $pla2['nomePacote'] ?></span></td>
                       <td><?php echo $pla2['nomeCad'] ?></td>
