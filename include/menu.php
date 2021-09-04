@@ -122,15 +122,15 @@
               <p>
                 Agenda
                 <i class="right fas fa-angle-left"></i>
-                <span class="badge badge-danger right">   
                   <?php 
                       $sq="select IdProblema from problema order by IdProblema";
                       $qu=mysqli_query($con,$sq);
                       $row=mysqli_num_rows($qu);
-                      
-                      echo"$row";
+
+                      if($_SESSION['profile']=='Admin'){
+                        echo"<span class='badge badge-danger right'>$row</span>";
+                      }
                   ?>
-               </span>
               </p>
             </a>
             <ul class="nav nav-treeview">

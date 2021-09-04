@@ -40,7 +40,7 @@
         <br>
             <div class="modal-footer justify-content-between">
               <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancelar</button>
-               <button type="submit" name="conc" class="btn btn-outline-success" onclick="return confirm('Deseja concluir o pagamento?')">Comprar</button>
+               <button type="submit" name="conc" class="btn btn-outline-success" onclick="return confirm('Deseja adicionar no carrinho?')">Adicionar</button>
             </div>
         </div>
     </div>

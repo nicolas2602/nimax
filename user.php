@@ -164,6 +164,7 @@
 </div>
 <!-- ./wrapper -->
 
+<?php include 'include/script.php' ?>
 <!-- jQuery -->
 <script src="plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
