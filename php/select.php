@@ -8,6 +8,7 @@ if(isset($_POST['log'])){
     $s= 
     "
     select * from cadastro
+    as r inner join profile_cad as p on P.idProfile = r.fk_idProfile
     where email='$email' and senha= '$senha'
     ";   
     $qu= mysqli_query($con, $s);
@@ -19,8 +20,7 @@ if(isset($_POST['log'])){
    if(mysqli_num_rows($qu)>0){
       $f= mysqli_fetch_assoc($qu);
       $_SESSION['IdCadastro']=$f['IdCadastro'];
-      // $_SESSION['IdLogging']=$f['IdLogging'];
-    //   $_SESSION['profile']=$f['nameProfile'];
+      $_SESSION['profile']=$f['nameProfile'];
       header ('location:dashboard.php');
 
      logMsg( "Entrou em login" );

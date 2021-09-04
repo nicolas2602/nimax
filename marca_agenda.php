@@ -1,7 +1,7 @@
 <?php 
     include 'php/conexao.php';
     include 'php/select2.php';
-    include 'php/m_insert.php';
+    include 'php/m_insert_admin.php';
 ?>
 
 <!DOCTYPE html>
@@ -10,7 +10,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" href="imagem/NimaxL.png" />
-  <title>NIMAX | Agenda</title>
+  <title>NIMAX | Marcar Agenda</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -50,16 +50,9 @@
         <div class="row">
           <div class="col-12">
             <div class="card">
-              <div class="card-header bg-secondary">
-                <?php
-                    if($_SESSION['profile']=='Admin'){
-                      echo "
-                        <h3 class='card-title'>Marcar Agenda</h3>
-                    "; }else{
-                      echo "<h3 class='card-title'>Seus relatos</h3>";
-                    }
-                ?>
-                
+              <div class="card-header bg-info">
+                <h3 class='card-title'>Marcar Agenda</h3>
+
                 <div class="card-tools">
                   <div class="input-group input-group-sm" style="width: 150px;">
                     <input type="search" name="table_search" class="form-control float-right" placeholder="Procurar">
@@ -81,13 +74,7 @@
                       <th>Nome</th>
                       <th>Data Hora</th>
                       <th>Problema</th>
-                        <?php
-                            if($_SESSION['profile']=='Admin'){
-                              echo "
-                            <th>Marcar</th>
-                            "; }
-  
-                        ?>
+                      <th>Marcar</th>    
                     </tr>
                   </thead>
                   <tbody>
@@ -95,48 +82,44 @@
                       $sql="select * from cadastro as rp
                       inner join problema as r on r.fk_cadastro = rp.IdCadastro
                       left  join agenda as p on p.fk_cadastro = rp.IdCadastro
-                      where IdCadastro = '$_SESSION[IdCadastro]' order by IdProblema DESC
+                      order by IdProblema DESC
                       ";
                       $qu=mysqli_query($con,$sql);
-                      while($agenda=  mysqli_fetch_assoc($qu)){
+                      while($agenda2=  mysqli_fetch_assoc($qu)){
                     ?>
                     <tr>
-                      <td> <?php echo $agenda['IdCadastro']?> </td>
-                      <td><?php echo $agenda['nomeCad']?></td>
+                      <td> <?php echo $agenda2['IdCadastro']?> </td>
+                      <td><?php echo $agenda2['nomeCad']?></td>
                       <td>
                         
                         <?php 
-                            $dataProblema = $agenda['dataProblema'];
+                            $dataProblema = $agenda2['dataProblema'];
                             echo date('d/m/Y H:i:s', strtotime($dataProblema));
                         ?>
 
                      </td>
 
-                      <td><span class="tag tag-success"><?php echo $agenda['descProblema']?></span></td>
+                      <td><span class="tag tag-success"><?php echo $agenda2['descProblema']?></span></td>
                     <form method="POST" enctype="multipart/form-data">
-                    <?php
-                            if($_SESSION['profile']=='Admin'){
-                              echo "
                       <td>                      
-                        <div class='input-group input-group-sm'>
-                          <input type='datetime-local' class='form-control' name='time' value='$agenda[dataAgenda]; ?>' required>
-                          <input type='hidden' name='idusuario' value='$agenda[IdCadastro]'>
-                            <span class='input-group-append'>
-                              <button type='submit' name='marc' class='btn btn-success btn-flat'>
-                                <i class='fas fa-check'></i>
+                        <div class="input-group input-group-sm">
+                          <input type="datetime-local" class="form-control" name="time2" value="<?= $agenda2['dataAgenda']; ?>" required>
+                          <input type="hidden" name="idusuario2" value="<?= $agenda2['IdCadastro']; ?>">
+                            <span class="input-group-append">
+                              <button type="submit" name="marc2" class="btn btn-success btn-flat">
+                                <i class="fas fa-check"></i>
                               </button>
                             </span>        
                         </div> 
                       </td>
-                      ";}?>
                     </form>
                     </tr>
                      
                     <tr class="expandable-body bg-light">
                         <td colspan="5">
                           <p>
-                            <b>Descrição de <?php echo $agenda['nomeCad']?>:</b><br/>
-                          <?php echo $agenda['msgProblema']?>
+                            <b>Descrição de <?php echo $agenda2['nomeCad']?>:</b><br/>
+                          <?php echo $agenda2['msgProblema']?>
                           </p>
                         </td>
                       </tr>
@@ -187,25 +170,24 @@
                       <?php 
                         $sql2="select * from agenda as cp 
                         inner join cadastro as c on c.IdCadastro = cp.fk_cadastro
-                        where IdCadastro = '$_SESSION[IdCadastro]'
                         ";
                         $qu2=mysqli_query($con,$sql2);
-                        while($am= mysqli_fetch_assoc($qu2)){
+                        while($am2= mysqli_fetch_assoc($qu2)){
                       
                       ?>
 
                     <tr>
-                    <td><?php echo $am['IdAgenda']?></td>
-                      <td><?php echo $am['nomeCad']?></td>
+                    <td><?php echo $am2['IdAgenda']?></td>
+                      <td><?php echo $am2['nomeCad']?></td>
                       <td><?php  
-                            $dataAgenda = $am['dataAgenda'];
+                            $dataAgenda = $am2['dataAgenda'];
                             echo date('d/m/Y H:i:s', strtotime($dataAgenda));
                           ?>
                       </td>
                       <td>
                               
-                         <a href="excluir_agd.php?del=<?php echo $am['IdAgenda'] ?>&<?php echo $am['fk_cadastro'] ?>
-                                &<?php echo $am['dataAgenda'] ?>"
+                         <a href="excluir_agd_admin.php?del=<?php echo $am2['IdAgenda'] ?>&<?php echo $am2['fk_cadastro'] ?>
+                                &<?php echo $am2['dataAgenda'] ?>"
                                 class="btn btn-danger">
                                 <i class="fas fa-trash-alt"></i>
                         </a> 

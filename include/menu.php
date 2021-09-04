@@ -49,14 +49,14 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="./dashboard.php" class="nav-link active">
-                  <i class="far fa-circle nav-icon"></i>
+                <a href="./dashboard.php" class="nav-link">
+                  <i class="nav-icon far fa-circle text-success"></i>
                   <p>Painel de Usuários</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="dashboard2.php" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
+                  <i class="nav-icon far fa-circle text-success"></i>
                   <p>Painel de Lucros</p>
                 </a>
               </li>
@@ -75,14 +75,14 @@
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="cadastro_empresa.php" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
+                  <i class="nav-icon far fa-circle text-primary"></i>
                   <p>Cadastrar</p>
                 </a>
               </li>
              
                 <li class="nav-item">
                   <a href="empresa.php" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
+                    <i class="nav-icon far fa-circle text-primary"></i>
                     <p>Informações</p>
                   </a>
                 </li>
@@ -91,7 +91,7 @@
 
           <li class="nav-item menu-open">
             <a href="#" class="nav-link active bg-secondary">
-            <i class="nav-icon fas fa-building"></i>
+            <i class="nav-icon fas fa-dollar-sign"></i>
               <p>
                 Planos
                 <i class="right fas fa-angle-left"></i>
@@ -100,7 +100,7 @@
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="planos.php" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
+                <i class="nav-icon far fa-circle text-secondary"></i>
                   <p>
                     Comprar
                   </p>
@@ -109,19 +109,20 @@
              
                 <li class="nav-item">
                   <a href="info_planos.php" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
+                    <i class="nav-icon far fa-circle text-secondary"></i>
                     <p>Informações</p>
                   </a>
                 </li>
             </ul>
           </li>
 
-          <li class="nav-item">
-            <a href="./agenda.php" class="nav-link">
+          <li class="nav-item menu-open">
+          <a href="#" class="nav-link active bg-warning">
               <i class="nav-icon far fa-calendar-alt"></i>
               <p>
                 Agenda
-                <span class="badge badge-info right">   
+                <i class="right fas fa-angle-left"></i>
+                <span class="badge badge-danger right">   
                   <?php 
                       $sq="select IdProblema from problema order by IdProblema";
                       $qu=mysqli_query($con,$sq);
@@ -132,6 +133,40 @@
                </span>
               </p>
             </a>
+            <ul class="nav nav-treeview">
+            <?php
+                if($_SESSION['profile']=='Admin'){
+                  echo "
+                    <li class='nav-item'>
+                      <a href='marca_agenda.php' class='nav-link'>
+                      <i class='nav-icon far fa-circle text-warning'></i>
+                        <p>
+                          Marcar Agenda
+                        </p>
+                      </a>
+                    </li>
+                  ";
+                }
+              ?>
+             
+                <li class="nav-item">
+                  <a href="agenda.php" class="nav-link">
+                    <i class="nav-icon far fa-circle text-warning"></i>
+                    <p>
+                      Agenda Marcada
+                      <span class="badge badge-info right">   
+                        <?php 
+                            $sq="select IdProblema from problema where fk_cadastro='$_SESSION[IdCadastro]'  order by IdProblema";
+                            $qu=mysqli_query($con,$sq);
+                            $row=mysqli_num_rows($qu);
+                            
+                            echo"$row";
+                        ?>
+                      </span>
+                    </p>
+                  </a>
+                </li>
+            </ul>
           </li>
 
 

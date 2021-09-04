@@ -29,6 +29,19 @@ create table cadastro (
  FOREIGN KEY (fk_IdCadastro) references cadastro(IdCadastro)
  );
 
+ -- Perfil Administrador ou Usuário --
+create table profile_cad(
+idProfile INT PRIMARY KEY AUTO_INCREMENT,
+nameProfile varchar(50)
+);
+
+insert into profile_cad(nameProfile) values ('Admin'), ('User');
+
+alter table cadastro
+ADD fk_idProfile int,
+ADD FOREIGN KEY(fk_idProfile) REFERENCES profile_cad(idProfile);
+
+-----------------------------------------------------------------------------------------------------------------------------------------
 
 CREATE TABLE pacote( 
 IdPacote int PRIMARY KEY AUTO_INCREMENT, 
@@ -68,7 +81,7 @@ create table problema(
 )
 
 create table agenda(
-    IdAgenda not null int AUTO_INCREMENT,
+    IdAgenda int not null AUTO_INCREMENT,
     fk_cadastro int not null,
     fk_IdProblema int not null,
     dataAgenda varchar(50) not null,

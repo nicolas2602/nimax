@@ -26,8 +26,8 @@ if(isset($_POST['cad'])){
      //     $img="perfil/".$_FILES['f1']['name'];
      // }
  
-     $i="insert into cadastro(nomeCad,dataN,genero,cpf,cep,endereco,cidade,estado,tel1,tel2,email,senha,foto) 
-         values ('$nome','$dataN','$gen','$cpf','$cep','$end','$city','$estado','$tel','$tel2','$email','$senhacript','imagem/perfil.jpg')";
+     $i="insert into cadastro(nomeCad,dataN,genero,cpf,cep,endereco,cidade,estado,tel1,tel2,email,senha,foto,fk_idProfile) 
+         values ('$nome','$dataN','$gen','$cpf','$cep','$end','$city','$estado','$tel','$tel2','$email','$senhacript','imagem/perfil.jpg','2')";
                  
          mysqli_query($con, $i);
          header ('location:index.php');    
