@@ -40,7 +40,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item menu-open">
-            <a href="#" class="nav-link active bg-success">
+            <a href="#" class="nav-link active bg-secondary">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Painel de Controle
@@ -50,13 +50,13 @@
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="./dashboard.php" class="nav-link">
-                  <i class="nav-icon far fa-circle text-success"></i>
+                  <i class="nav-icon far fa-circle text-secondary"></i>
                   <p>Painel de Usuários</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="dashboard2.php" class="nav-link">
-                  <i class="nav-icon far fa-circle text-success"></i>
+                  <i class="nav-icon far fa-circle text-secondary"></i>
                   <p>Painel de Lucros</p>
                 </a>
               </li>
@@ -90,7 +90,7 @@
           </li>
 
           <li class="nav-item menu-open">
-            <a href="#" class="nav-link active bg-secondary">
+            <a href="#" class="nav-link active bg-success">
             <i class="nav-icon fas fa-dollar-sign"></i>
               <p>
                 Planos
@@ -100,7 +100,7 @@
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="planos.php" class="nav-link">
-                <i class="nav-icon far fa-circle text-secondary"></i>
+                <i class="nav-icon far fa-circle text-success"></i>
                   <p>
                     Comprar
                   </p>
@@ -109,7 +109,7 @@
              
                 <li class="nav-item">
                   <a href="info_planos.php" class="nav-link">
-                    <i class="nav-icon far fa-circle text-secondary"></i>
+                    <i class="nav-icon far fa-circle text-success"></i>
                     <p>Informações</p>
                   </a>
                 </li>

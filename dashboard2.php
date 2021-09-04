@@ -86,7 +86,7 @@
               <div class="icon">
               <i class="fas fa-sun"></i>
               </div>
-              <a href="#" class="small-box-footer">Vizualizar <i class="fas fa-arrow-circle-right"></i></a>
+              <!-- <a href="t_standart.php" class="small-box-footer">Vizualizar <i class="fas fa-arrow-circle-right"></i></a> -->
             </div>
           </div>
           <!-- ./col -->
@@ -110,7 +110,7 @@
               <div class="icon">
               <i class="fas fa-sun"></i>
               </div>
-              <a href="#" class="small-box-footer">Vizualizar <i class="fas fa-arrow-circle-right"></i></a>
+              <!-- <a href="#" class="small-box-footer">Vizualizar <i class="fas fa-arrow-circle-right"></i></a> -->
             </div>
           </div>
 
@@ -132,7 +132,29 @@
               <div class="icon">
               <i class="fas fa-sun"></i>
               </div>
-              <a href="#" class="small-box-footer">Vizualizar <i class="fas fa-arrow-circle-right"></i></a>
+              <!-- <a href="#" class="small-box-footer">Vizualizar <i class="fas fa-arrow-circle-right"></i></a> -->
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-6">
+            <!-- small box -->
+            <div class="small-box bg-success">
+              <div class="inner">
+
+                 <?php 
+                    $sq="select IdPagamento from paga_pacote order by IdPagamento";
+                    $qu=mysqli_query($con,$sq);
+                    $row=mysqli_num_rows($qu);
+                    
+                    echo"<h3>$row</h3>";
+                ?>
+
+                <p>Total de Planos</p>
+              </div>
+              <div class="icon">
+              <i class="fas fa-dollar-sign"></i>
+              </div>
+              <a href="t_planos.php" class="small-box-footer">Vizualizar <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
  

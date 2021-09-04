@@ -1,7 +1,6 @@
 <?php 
-   include 'php/conexao.php'; 
-   include 'php/select2.php';
- 
+    include 'php/conexao.php';
+    include 'php/select2.php';
 ?>
 
 <!DOCTYPE html>
@@ -9,8 +8,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" href="imagem/NimaxL.png" />
-  <title>NIMAX | Dados Planos</title>
+  <link rel="shortcut icon" href="imagem/NimaxL.png" />
+    <title>NIMAX | Usuários</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -21,10 +20,9 @@
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
-
-   <?php include 'include/navbar.php'; ?>  
-   <?php include 'include/menu.php'; ?>
-
+     
+    <?php include 'include/navbar.php'; ?>
+    <?php include 'include/menu.php'; ?>
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -33,7 +31,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Dados de assinatura</h1>
+            <h1>Total de Usuários</h1>
           </div>
           <div class="col-sm-6">
             <?php include 'include/tempo.php' ?>
@@ -45,11 +43,13 @@
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
+
+        <!-- /.row -->
         <div class="row">
           <div class="col-12">
             <div class="card">
               <div class="card-header bg-info">
-                <h3 class="card-title">Assinatura de Planos</h3>
+                <h3 class="card-title">Usuários Cadastrados</h3>
 
                 <div class="card-tools">
                   <div class="input-group input-group-sm" style="width: 150px;">
@@ -68,58 +68,74 @@
                 <table class="table table-hover text-nowrap">
                   <thead>
                     <tr>
-                      <th>Código</th>
-                      <th>Data Pagamento</th>
-                      <th>Forma Pagamento</th>
-                      <th>Plano</th>
-                      <th>Assinante</th>
+                      <th>ID</th>
+                      <th>Foto</th>
+                      <th>Nome</th>
+                      <th>Data de Nascimento</th>
+                      <th>Gênero</th>
+                      <th>CPF</th>
+                      <th>CEP</th>
+                      <th>Status</th>
                     </tr>
                   </thead>
-                   <?php
+                  <?php
                       $sq=
                       "
-                      select * from paga_pacote as cp
-                      inner join cadastro as p on p.IdCadastro = cp.fk_IdCadastro
-                      inner join pacote as c on c.IdPacote= cp.fk_IdPacote
-                      where fk_IdCadastro='$_SESSION[IdCadastro]'
+                      select * from cadastro where fk_idProfile=2
                       ";
 
                       $qu=mysqli_query($con,$sq);
-                      while($pla2=  mysqli_fetch_assoc($qu)){
+                      while($cad=  mysqli_fetch_assoc($qu)){
                     ?>
                   <tbody>
                     <tr>
-                      <td><?php echo $pla2['IdPagamento'] ?></td>
-                        <td>
-                          <?php 
-                                $dataPag = $pla2['data_pagamento'];
-                                echo date('d/m/Y H:i:s', strtotime($dataPag));
-                            ?>
-                        </td>
-                      <td><?php echo $pla2['formaPag'] ?></td>
+                      <td><?php echo $cad['IdCadastro'] ?></td>
                       <td>
-                        <span class="tag tag-success">
-                          <?php 
-                          if($pla2['nomePacote'] == "Standart"){
-                             echo "<div class='badge badge-danger'>$pla2[nomePacote]</div>";
-                          }
-                          if($pla2['nomePacote'] == "Prime"){
-                            echo "<div class='badge badge-secondary'>$pla2[nomePacote]</div>";
-                          }
-                         if($pla2['nomePacote'] == "Premium"){
-                          echo "<div class='badge badge-warning right'>$pla2[nomePacote]</div>";
-                          }
-                          ?>
-                        </span>
+                        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                          <div class="image">
+                          <img src="<?php echo $cad['foto'];?>" class="img-circle elevation-2" alt="<?php echo $cad['IdCadastro'] ?>">
+                          </div>
+                        </div>
                       </td>
-                      <td><?php echo $pla2['nomeCad'] ?></td>
+                      <td><?php echo $cad['nomeCad'] ?></td>
                       <td>
+                        
+                         <?php 
 
-                      <a href="del_planos.php?del=<?php echo $pla2['IdPagamento'] ?>&<?php echo $pla2['data_pagamento'] ?>
-                                &<?php echo $pla2['formaPag'] ?>&<?php echo $pla2['fk_IdPacote'] ?>&<?php echo $pla2['fk_IdCadastro'] ?>"
-                                class="btn btn-danger" onclick="return confirm('Deseja cancelar o plano?')">
-                                <i class="fas fa-trash-alt"></i>
-                           </a> 
+                           $dataN = $cad['dataN'];
+                           echo date('d/m/Y', strtotime($dataN));
+
+                         ?>
+                    
+                     </td>
+                      <td><?php echo $cad['genero'] ?></td>
+                      <td><?php echo $cad['cpf'] ?></td>
+                      <td><?php echo $cad['cep'] ?></td>
+                      <td>
+                        <?php
+                          if($cad['status_user'] == 0){
+                            echo "<div class='badge badge-success'>Ativado</div>";
+                          }
+                          if($cad['status_user'] == 1){
+                            echo "<div class='badge badge-danger'>Desativado</div>";
+                          }
+                      ?>
+                      </td>
+                      <td>
+                        <?php
+                        if($cad['status_user'] == 1){
+                          echo " <a class='btn btn-success' href='ativar_user.php?act=$cad[IdCadastro]' onclick='return confirm(Desativar a conta do usuário?)'>
+                            ON
+                          </a>";
+                        }
+                        if($cad['status_user'] == 0){
+                          echo " <a class='btn btn-danger' href='desativar_user.php?dct=$cad[IdCadastro]' onclick='return confirm(Ativar a conta do usuário?)'>
+                           OFF
+                          </a>";
+                        }
+                        
+                        ?>
+                         
                       </td>
                     </tr>
                   </tbody>
@@ -132,13 +148,13 @@
           </div>
         </div>
 
-
+        <!-- /.row -->
       </div><!-- /.container-fluid -->
     </section>
     <!-- /.content -->
   </div>
-  <!-- /.content-wrapper -->
-  <?php include 'include/footer.php'; ?>
+
+  <?php include 'include/footer.php' ?>
 
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
@@ -151,8 +167,15 @@
 <!-- jQuery -->
 <script src="plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
+
 <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
 <!-- AdminLTE App -->
-<script src="dist/js/adminlte.min.js"></script>
+<script>
+$(function () {
+  bsCustomFileInput.init();
+});
+</script>
+
 </body>
 </html>

@@ -9,7 +9,7 @@ if(isset($_POST['log'])){
     "
     select * from cadastro
     as r inner join profile_cad as p on P.idProfile = r.fk_idProfile
-    where email='$email' and senha= '$senha'
+    where email='$email' and senha= '$senha' and status_user=0
     ";   
     $qu= mysqli_query($con, $s);
    

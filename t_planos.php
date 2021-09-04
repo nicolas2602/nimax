@@ -1,7 +1,6 @@
 <?php 
-   include 'php/conexao.php'; 
-   include 'php/select2.php';
- 
+    include 'php/conexao.php';
+    include 'php/select2.php';
 ?>
 
 <!DOCTYPE html>
@@ -9,8 +8,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" href="imagem/NimaxL.png" />
-  <title>NIMAX | Dados Planos</title>
+  <link rel="shortcut icon" href="imagem/NimaxL.png" />
+    <title>NIMAX | Usuários</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -21,10 +20,9 @@
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
-
-   <?php include 'include/navbar.php'; ?>  
-   <?php include 'include/menu.php'; ?>
-
+     
+    <?php include 'include/navbar.php'; ?>
+    <?php include 'include/menu.php'; ?>
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -33,7 +31,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Dados de assinatura</h1>
+            <h1>Total de Planos</h1>
           </div>
           <div class="col-sm-6">
             <?php include 'include/tempo.php' ?>
@@ -45,11 +43,13 @@
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
+
+        <!-- /.row -->
         <div class="row">
           <div class="col-12">
             <div class="card">
-              <div class="card-header bg-info">
-                <h3 class="card-title">Assinatura de Planos</h3>
+              <div class="card-header bg-success">
+                <h3 class="card-title">Usuários com Planos</h3>
 
                 <div class="card-tools">
                   <div class="input-group input-group-sm" style="width: 150px;">
@@ -68,59 +68,63 @@
                 <table class="table table-hover text-nowrap">
                   <thead>
                     <tr>
-                      <th>Código</th>
-                      <th>Data Pagamento</th>
-                      <th>Forma Pagamento</th>
-                      <th>Plano</th>
-                      <th>Assinante</th>
+                      <th>ID</th>
+                      <th>Foto</th>
+                      <th>Nome</th>
+                      <th>Data de Nascimento</th>
+                      <th>Forma de Pagamento</th>
+                      <th>Planos</th>
                     </tr>
                   </thead>
-                   <?php
+                  <?php
                       $sq=
                       "
-                      select * from paga_pacote as cp
-                      inner join cadastro as p on p.IdCadastro = cp.fk_IdCadastro
-                      inner join pacote as c on c.IdPacote= cp.fk_IdPacote
-                      where fk_IdCadastro='$_SESSION[IdCadastro]'
+                      select * from paga_pacote as rt
+                      inner join cadastro as t on t.IdCadastro = rt.fk_IdCadastro
+                      inner join pacote as r on r.IdPacote= rt.fk_IdPacote
                       ";
 
                       $qu=mysqli_query($con,$sq);
-                      while($pla2=  mysqli_fetch_assoc($qu)){
+                      while($stand=  mysqli_fetch_assoc($qu)){
                     ?>
                   <tbody>
                     <tr>
-                      <td><?php echo $pla2['IdPagamento'] ?></td>
-                        <td>
-                          <?php 
-                                $dataPag = $pla2['data_pagamento'];
-                                echo date('d/m/Y H:i:s', strtotime($dataPag));
-                            ?>
-                        </td>
-                      <td><?php echo $pla2['formaPag'] ?></td>
+                      <td><?php echo $stand['IdCadastro'] ?></td>
                       <td>
-                        <span class="tag tag-success">
-                          <?php 
-                          if($pla2['nomePacote'] == "Standart"){
-                             echo "<div class='badge badge-danger'>$pla2[nomePacote]</div>";
+                        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                          <div class="image">
+                          <img src="<?php echo $stand['foto'];?>" class="img-circle elevation-2" alt="<?php echo $stand['IdCadastro'] ?>">
+                          </div>
+                        </div>
+                      </td>
+                      <td><?php echo $stand['nomeCad'] ?></td>
+                      <td>
+                        
+                         <?php 
+
+                           $dataN = $stand['dataN'];
+                           echo date('d/m/Y', strtotime($dataN));
+
+                         ?>
+                    
+                     </td>
+                      <td><?php echo $stand['formaPag'] ?></td>
+                      <td>
+                        
+                      <?php 
+                          if($stand['nomePacote'] == "Standart"){
+                             echo "<div class='badge badge-danger'>$stand[nomePacote]</div>";
                           }
-                          if($pla2['nomePacote'] == "Prime"){
-                            echo "<div class='badge badge-secondary'>$pla2[nomePacote]</div>";
+                          if($stand['nomePacote'] == "Prime"){
+                            echo "<div class='badge badge-secondary'>$stand[nomePacote]</div>";
                           }
-                         if($pla2['nomePacote'] == "Premium"){
-                          echo "<div class='badge badge-warning right'>$pla2[nomePacote]</div>";
+                         if($stand['nomePacote'] == "Premium"){
+                          echo "<div class='badge badge-warning right'>$stand[nomePacote]</div>";
                           }
                           ?>
-                        </span>
-                      </td>
-                      <td><?php echo $pla2['nomeCad'] ?></td>
-                      <td>
-
-                      <a href="del_planos.php?del=<?php echo $pla2['IdPagamento'] ?>&<?php echo $pla2['data_pagamento'] ?>
-                                &<?php echo $pla2['formaPag'] ?>&<?php echo $pla2['fk_IdPacote'] ?>&<?php echo $pla2['fk_IdCadastro'] ?>"
-                                class="btn btn-danger" onclick="return confirm('Deseja cancelar o plano?')">
-                                <i class="fas fa-trash-alt"></i>
-                           </a> 
-                      </td>
+                    
+                     </td>
+                         
                     </tr>
                   </tbody>
                   <?php } ?>
@@ -132,13 +136,13 @@
           </div>
         </div>
 
-
+        <!-- /.row -->
       </div><!-- /.container-fluid -->
     </section>
     <!-- /.content -->
   </div>
-  <!-- /.content-wrapper -->
-  <?php include 'include/footer.php'; ?>
+
+  <?php include 'include/footer.php' ?>
 
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
@@ -151,8 +155,15 @@
 <!-- jQuery -->
 <script src="plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
+
 <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
 <!-- AdminLTE App -->
-<script src="dist/js/adminlte.min.js"></script>
+<script>
+$(function () {
+  bsCustomFileInput.init();
+});
+</script>
+
 </body>
 </html>

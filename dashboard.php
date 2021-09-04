@@ -86,7 +86,7 @@
               <div class="icon">
                 <i class="ion ion-person-add"></i>
               </div>
-              <a href="#" class="small-box-footer">Vizualizar <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="user.php" class="small-box-footer">Vizualizar <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -108,7 +108,7 @@
               <div class="icon">
                  <i class="fas fa-clock"></i>
               </div>
-              <a href="#" class="small-box-footer">Vizualizar <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="acesso.php" class="small-box-footer">Vizualizar <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
 
@@ -130,7 +130,7 @@
               <div class="icon">
                   <i class="fas fa-envelope"></i>
               </div>
-              <a href="#" class="small-box-footer">Vizualizar <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="t_msg.php" class="small-box-footer">Vizualizar <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
 
@@ -152,7 +152,7 @@
               <div class="icon">
               <i class="nav-icon fas fa-building"></i>
               </div>
-              <a href="#" class="small-box-footer">Vizualizar <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="t_emp.php" class="small-box-footer">Vizualizar <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
  
@@ -165,44 +165,48 @@
             <div class="container-fluid">
               <div class="row">
                 <div class="col-12">
-     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-        <script type="text/javascript">
-        google.charts.load('current', {'packages':['corechart']});
-        google.charts.setOnLoadCallback(drawChart);
+                <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+                    <script type="text/javascript">
+                      google.charts.load('current', {'packages':['corechart']});
+                      google.charts.setOnLoadCallback(drawChart);
 
-        function drawChart() {
-            var data = google.visualization.arrayToDataTable([
-            ['data', 'Usuário'],
-            
-            <?php 
-            
-            $sq="SELECT * FROM logging";
-            $qu=mysqli_query($con,$sq);
-            while($item = mysqli_fetch_assoc($qu))
-            {
+                      function drawChart() {
+                          var data = google.visualization.arrayToDataTable([
+                          ['data', 'Usuário'],
+                          
+                          <?php 
+                          
+                          $sq=" select * from logging
+                          as r 
+                          inner join cadastro as p on P.IdCadastro = r.fk_cadastro
+                          where fk_idProfile=2
+                          order by IdLogging";
+                          $qu=mysqli_query($con,$sq);
+                          while($item = mysqli_fetch_assoc($qu))
+                          {
 
-                $IdLogging = $item['fk_cadastro'];
-                $data = $item['dateLogging'];
-            
-            ?>
+                              $IdLogging = $item['fk_cadastro'];
+                              $data = $item['dateLogging'];
+                          
+                          ?>
 
-            ['<?php echo date('d/m/Y H:i:s', strtotime($data)); ?>', <?php echo $IdLogging ?> ],
-            <?php } ?>
-            ]);
+                          ['<?php echo date('d/m/Y H:i:s', strtotime($data)); ?>', <?php echo $IdLogging ?> ],
+                          <?php } ?>
+                          ]);
 
-            var options = {
-            title: 'Estatística de Acessos',
-            curveType: 'function',
-            backgroundColor: '#e6f2ff',
-            legend: { position: 'none' }
-            };
+                          var options = {
+                          title: 'Estatística de Acessos',
+                          curveType: 'function',
+                          backgroundColor: '#e6f2ff',
+                          legend: { position: 'none' }
+                          };
 
-            var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+                          var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
 
-            chart.draw(data, options);
-        }
-        </script>
-          <div id="curve_chart" class="circle" style="width: 1190px; height: 450px"></div>
+                          chart.draw(data, options);
+                        }
+                   </script>
+                      <div id="curve_chart" class="circle" style="width: 1190px; height: 450px"></div>
 
                   
                 </div>  
