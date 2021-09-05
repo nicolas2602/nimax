@@ -175,6 +175,24 @@
             </ul>
           </li>
 
+          <li class="nav-item menu-open">
+            <a href="#" class="nav-link active bg-white">
+            <i class="nav-icon fas fa-file-alt"></i>
+              <p>
+                Documento
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="backup.php" class="nav-link">
+                  <i class="nav-icon far fa-circle text-white"></i>
+                  <p>Backup de Arquivos</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+
 
           <li class="nav-item">
             <a href="./bo.php" class="nav-link">
