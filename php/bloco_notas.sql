@@ -103,3 +103,12 @@ create table agenda(
 )
 
 insert into agenda (fk_cadastro,fk_IdProblema,dataAgenda) values ("7","2","2021-08-01 19:02:02")
+
+create table backup(
+  IdBackup int primary key AUTO_INCREMENT,
+  dataBackup datetime default now(),
+  nomeBackup varchar(100) not null,
+  arquivoBackup varchar(100) not null,
+  fk_IdCadastro int,
+  foreign key(fk_IdCadastro) references cadastro(IdCadastro)
+)

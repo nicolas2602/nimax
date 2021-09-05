@@ -39,29 +39,35 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-          <li class="nav-item menu-open">
-            <a href="#" class="nav-link active bg-secondary">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
+
+          <?php 
+           if($_SESSION['profile']=='Admin'){
+          echo"
+          <li class='nav-item menu-open'>
+            <a href='#' class='nav-link active bg-secondary'>
+              <i class='nav-icon fas fa-tachometer-alt'></i>
               <p>
                 Painel de Controle
-                <i class="right fas fa-angle-left"></i>
+                <i class='right fas fa-angle-left'></i>
               </p>
             </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="./dashboard.php" class="nav-link">
-                  <i class="nav-icon far fa-circle text-secondary"></i>
+            <ul class='nav nav-treeview'>
+              <li class='nav-item'>
+                <a href='./dashboard.php' class='nav-link'>
+                  <i class='nav-icon far fa-circle text-secondary'></i>
                   <p>Painel de Usuários</p>
                 </a>
               </li>
-              <li class="nav-item">
-                <a href="dashboard2.php" class="nav-link">
-                  <i class="nav-icon far fa-circle text-secondary"></i>
+              <li class='nav-item'>
+                <a href='dashboard2.php' class='nav-link'>
+                  <i class='nav-icon far fa-circle text-secondary'></i>
                   <p>Painel de Lucros</p>
                 </a>
               </li>
             </ul>
-          </li>
+          </li>";
+           }
+          ?>
           
       
           <li class="nav-item menu-open">

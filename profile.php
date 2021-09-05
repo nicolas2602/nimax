@@ -273,7 +273,7 @@
                         </div>
                       </div>
                       <div class="form-group row">
-                        <label for="inputSkills" class="col-sm-2 col-form-label">Foto</label>
+                        <label for="inputSkills" class="col-sm-2 col-form-label">Selecione uma foto</label>
                         <div class="col-sm-10">
                           <div class="custom-file">
                             <input type="file" class="custom-file-input" id="customFile" name="f1" id="file" value="<?php echo $f['foto'];?>"
@@ -397,13 +397,20 @@
   <!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->
-
+<?php include 'include/script.php' ?>
 <!-- jQuery -->
 <script src="plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
 <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
 <script src="dist/js/adminlte.min.js"></script>
+
+<script>
+    $(".custom-file-input").on("change", function() {
+    var fileName = $(this).val().split("\\").pop();
+    $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+    });
+</script>
 
 </body>
 </html>

@@ -21,7 +21,7 @@ if(isset($_POST['log'])){
       $f= mysqli_fetch_assoc($qu);
       $_SESSION['IdCadastro']=$f['IdCadastro'];
       $_SESSION['profile']=$f['nameProfile'];
-      header ('location:dashboard.php');
+      header ('location: profile.php');
 
      logMsg( "Entrou em login" );
 
