@@ -158,7 +158,7 @@
 
                     <div class="row">
                         <div class="col">
-                           <a class="btn btn-primary mb-2" href="dashboard.php">Voltar</a>
+                           <a class="btn btn-primary mb-2" href="profile.php">Voltar</a>
                              <input class="btn btn-success mb-2" type="submit" name="cad" value="Cadastrar">
                         </div>
                     </div>
