@@ -2,7 +2,6 @@
     include 'php/conexao.php';
     include 'php/select2.php';
     include 'php/insert_backup.php';
-    include 'php/up_backup.php';
 ?>
 
 <!DOCTYPE html>
@@ -143,7 +142,7 @@
                     <tr>
                       <td>
                         <div class="col-8">
-                            <input type="text" name="proj" class="form-control" value="<?= $arq['nomeBackup'] ?>">
+                            <?php echo $arq['nomeBackup'] ?>
                             <input type="hidden" name="data" value="<?= $arq['dataBackup'] ?>">
                             <input type="hidden" name="id" value="<?= $arq['IdBackup'] ?>">
                         </div>
@@ -151,11 +150,15 @@
                       <td><?php $dataArq = $arq['dataBackup']; echo date('d/m/Y H:i:s', strtotime($dataArq)); ?></td>
                       <td><?php echo $arq['arquivoBackup'] ?></td>
                       <td>
-                         <a href="<?php echo $arq['arquivoBackup'] ?>" alt="Baixar o arquivo" class="btn btn-success" download><i class="fas fa-download"></i></a>
-                         <button type="submit" name="upBack" alt="Atualizar o nome"class="btn btn-primary"><i class="fas fa-pencil-alt"></i></button>
+                        <a href="<?php echo $arq['arquivoBackup'] ?>" alt="Baixar o arquivo" class="btn btn-success" download><i class="fas fa-download"></i></a>
+                        <a href="up_backup.php?IdBackup=<?php echo $arq['IdBackup'] ?>&dataBackup=<?php echo $arq['dataBackup'] ?>
+                        &nomeBackup<?php echo $arq['nomeBackup'] ?>&arquivoBackup<?php echo $arq['arquivoBackup'] ?>
+                        &fk_IdCadastro=<?php echo $arq['fk_IdCadastro'] ?>" 
+                        name="upBack" alt="Atualizar o nome" class="btn btn-primary"><i class="fas fa-pencil-alt"></i></a href=>
                          
-                         <a href="del_backup.php?del=<?php echo $arq=['IdBackup'] ?>&<?php echo $arq=['dataBackup'] ?>
-                         &<?php echo $arq=['nomeBackup'] ?>&<?php echo $arq=['arquivoBackup'] ?>&<?php echo $arq=['fk_IdCadastro'] ?>
+                         <a href="exc_backup.php?IdBackup=<?php echo $arq['IdBackup'] ?>&dataBackup=<?php echo $arq['dataBackup'] ?>
+                        &nomeBackup<?php echo $arq['nomeBackup'] ?>&arquivoBackup<?php echo $arq['arquivoBackup'] ?>
+                        &fk_IdCadastro=<?php echo $arq['fk_IdCadastro'] ?>
                          " alt="Excluir o arquivo" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>
 
                       </td>
