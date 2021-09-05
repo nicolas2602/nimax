@@ -114,23 +114,23 @@
                       <td>
                         <?php
                           if($cad['status_user'] == 0){
-                            echo "<div class='badge badge-success'>Ativado</div>";
+                            echo "<h4><div class='badge badge-success'>ON</div></h4>";
                           }
                           if($cad['status_user'] == 1){
-                            echo "<div class='badge badge-danger'>Desativado</div>";
+                            echo "<h4><div class='badge badge-danger'>OFF</div></h4>";
                           }
                       ?>
                       </td>
                       <td>
                         <?php
                         if($cad['status_user'] == 1){
-                          echo " <a class='btn btn-success' href='ativar_user.php?act=$cad[IdCadastro]' onclick='return confirm(Desativar a conta do usuário?)'>
-                            ON
+                          echo " <a class='btn btn-block bg-gradient-success btn-sm' href='ativar_user.php?act=$cad[IdCadastro]' onclick='return confirm(Desativar a conta do usuário?)'>
+                          <i class='fas fa-power-off'></i>
                           </a>";
                         }
                         if($cad['status_user'] == 0){
-                          echo " <a class='btn btn-danger' href='desativar_user.php?dct=$cad[IdCadastro]' onclick='return confirm(Ativar a conta do usuário?)'>
-                           OFF
+                          echo " <a class='btn btn-block bg-gradient-danger btn-sm' href='desativar_user.php?dct=$cad[IdCadastro]' onclick='return confirm(Ativar a conta do usuário?)'>
+                          <i class='fas fa-power-off'></i>
                           </a>";
                         }
                         

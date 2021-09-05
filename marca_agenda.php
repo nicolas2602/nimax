@@ -2,6 +2,10 @@
     include 'php/conexao.php';
     include 'php/select2.php';
     include 'php/m_insert_admin.php';
+    include 'php/logger.php';
+    if($_SESSION['profile']=='User'){
+      logMsg( "Um usuário invadiu o sistema", 'warning');
+    }
 ?>
 
 <!DOCTYPE html>

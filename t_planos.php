@@ -74,14 +74,17 @@
                       <th>Data de Nascimento</th>
                       <th>Forma de Pagamento</th>
                       <th>Planos</th>
+                      <th>Preço</th>
                     </tr>
                   </thead>
                   <?php
+                    $total = 0;
                       $sq=
                       "
-                      select * from paga_pacote as rt
-                      inner join cadastro as t on t.IdCadastro = rt.fk_IdCadastro
-                      inner join pacote as r on r.IdPacote= rt.fk_IdPacote
+                      select * from paga_pacote as rtc
+                      inner join compra as c on c.fk_IdPagamento = rtc.IdPagamento
+                      inner join cadastro as t on t.IdCadastro = rtc.fk_IdCadastro
+                      inner join pacote as r on r.IdPacote= rtc.fk_IdPacote
                       ";
 
                       $qu=mysqli_query($con,$sq);
@@ -102,7 +105,7 @@
                         
                          <?php 
 
-                           $dataN = $stand['dataN'];
+                           $dataN = $stand['dataCompra'];
                            echo date('d/m/Y', strtotime($dataN));
 
                          ?>
@@ -124,10 +127,22 @@
                           ?>
                     
                      </td>
-                         
+                     <td>R$ <?php echo $stand['preco'] ?></td>
+    
                     </tr>
+                    
                   </tbody>
-                  <?php } ?>
+                  <?php 
+                    if($stand['preco']){
+                      $total = $total + ($stand['preco']);
+                    } 
+                      }
+                  
+                  ?>
+                  <tr>
+                    <th scope="row" class="table-secondary"></th>
+                    <td colspan="5" align="right" class="table-secondary"><strong>TOTAL:</strong></td>
+                    <td><strong>R$ <?php echo number_format($total, 2); ?></strong></td>
                 </table>
               </div>
               <!-- /.card-body -->

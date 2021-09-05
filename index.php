@@ -35,7 +35,7 @@ include 'php/select.php';
     </style>
 
     <body>
-        <form method="post"  enctype="multipart/form-data">
+        <form method="post" enctype="multipart/form-data">
           <img src="imagem/logoN.png" class="rounded-circle" alt="NIMAX" width="245" height="205" id="logo">
             <div class="container">
                 <div class="card" style="width: 20rem; height: 17rem">

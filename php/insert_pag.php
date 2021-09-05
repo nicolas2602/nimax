@@ -12,7 +12,7 @@ if(isset($_POST['conc'])){
        mysqli_query($con, $insert);
 
        if($insert){
-        header('location: planos.php');
+        header('location: info_planos.php');
 }
 }
 ?>

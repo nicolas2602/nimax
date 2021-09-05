@@ -1,6 +1,7 @@
 <?php 
    include 'php/conexao.php'; 
    include 'php/select2.php';
+   include 'php/insert_comp.php';
  
 ?>
 
@@ -49,16 +50,11 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header bg-info">
-                <h3 class="card-title">Assinatura de Planos</h3>
+                <h3 class="card-title">Confirmar o pagamento</h3>
 
                 <div class="card-tools">
                   <div class="input-group input-group-sm" style="width: 150px;">
-                    <input type="text" name="table_search" class="form-control float-right" placeholder="Procurar">
-
                     <div class="input-group-append">
-                      <button type="submit" class="btn btn-default">
-                        <i class="fas fa-search"></i>
-                      </button>
                     </div>
                   </div>
                 </div>
@@ -69,18 +65,17 @@
                   <thead>
                     <tr>
                       <th>Código</th>
-                      <th>Data Pagamento</th>
-                      <th>Forma Pagamento</th>
                       <th>Plano</th>
-                      <th>Assinante</th>
+                      <th>Valor</th>
+                      <th>Forma Pagamento</th>
                     </tr>
                   </thead>
                    <?php
                       $sq=
                       "
-                      select * from paga_pacote as cp
-                      inner join cadastro as p on p.IdCadastro = cp.fk_IdCadastro
-                      inner join pacote as c on c.IdPacote= cp.fk_IdPacote
+                      select * from paga_pacote as cpt
+                      inner join cadastro as p on p.IdCadastro = cpt.fk_IdCadastro
+                      inner join pacote as c on c.IdPacote= cpt.fk_IdPacote
                       where fk_IdCadastro='$_SESSION[IdCadastro]'
                       ";
 
@@ -90,13 +85,6 @@
                   <tbody>
                     <tr>
                       <td><?php echo $pla2['IdPagamento'] ?></td>
-                        <td>
-                          <?php 
-                                $dataPag = $pla2['data_pagamento'];
-                                echo date('d/m/Y H:i:s', strtotime($dataPag));
-                            ?>
-                        </td>
-                      <td><?php echo $pla2['formaPag'] ?></td>
                       <td>
                         <span class="tag tag-success">
                           <?php 
@@ -112,15 +100,24 @@
                           ?>
                         </span>
                       </td>
-                      <td><?php echo $pla2['nomeCad'] ?></td>
+                      <td>R$ <?php echo $pla2['preco'] ?></td>
+                      <td><?php echo $pla2['formaPag'] ?></td>
+                    <form method="post" enctype="multipart/form-data">  
                       <td>
 
-                      <a href="del_planos.php?del=<?php echo $pla2['IdPagamento'] ?>&<?php echo $pla2['data_pagamento'] ?>
+                      <a href="del_planos.php?del=<?php echo $pla2['IdPagamento'] ?>
                                 &<?php echo $pla2['formaPag'] ?>&<?php echo $pla2['fk_IdPacote'] ?>&<?php echo $pla2['fk_IdCadastro'] ?>"
                                 class="btn btn-danger" onclick="return confirm('Deseja cancelar o plano?')">
                                 <i class="fas fa-trash-alt"></i>
                            </a> 
+                      <input type="hidden" name="pag_pac" value="<?= $pla2['IdPagamento'] ?>">
+                        <button type="submit" class="btn btn-success" name="conc" onclick="return confirm('Deseja concluir o pagamento?')">
+                         <i class="fas fa-check"></i>
+                        </button>
+                      
+                       
                       </td>
+                    </form>
                     </tr>
                   </tbody>
                   <?php } ?>

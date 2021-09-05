@@ -114,6 +114,13 @@
 
                 <strong><i class="fas fa-envelope mr-1"></i> Email</strong>
                 <p class="text-muted"><?php echo $f['email'];?></p>
+                  
+                <hr>
+
+                <strong><i class="fas fa-phone mr-1"></i> Telefone</strong>
+                <p class="text-muted"><?php echo $f['tel1'];?></p>
+
+
               </div>
               <!-- /.card-body -->
             </div>

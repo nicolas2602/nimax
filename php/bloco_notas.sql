@@ -59,7 +59,19 @@ fk_IdPacote int,
 fk_IdCadastro int,
 foreign key(fk_IdPacote) references pacote(IdPacote),
 foreign key(fk_IdCadastro) references cadastro(IdCadastro)
+)
+
+CREATE TABLE compra(
+	IdCompra INT PRIMARY KEY AUTO_INCREMENT,
+	dataCompra DATETIME DEFAULT NOW(),
+	fk_IdCadastro int not null,
+    fk_IdPagamento int not null,
+	FOREIGN key (fk_IdCadastro) references cadastro (IdCadastro),
+    FOREIGN key (fk_IdPagamento) references paga_pacote(IdPagamento)   
 );
+
+INSERT INTO COMPRA (fk_IdCadastro) VALUES ('1');
+
 
 
 Create table logging(
@@ -67,7 +79,7 @@ IdLogging int primary key AUTO_INCREMENT,
 dateLogging datetime default now(),
 level varchar(100),
 msg varchar(100) not null,
-fk_registro int not null,
+fk_cadastro int not null,
 FOREIGN key (fk_cadastro) references cadastro (IdCadastro)   
 );
 

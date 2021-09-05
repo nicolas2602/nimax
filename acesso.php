@@ -71,10 +71,8 @@
                       <th>ID</th>
                       <th>Foto</th>
                       <th>Nome</th>
-                      <th>Data de Nascimento</th>
-                      <th>Gênero</th>
-                      <th>CPF</th>
-                      <th>CEP</th>
+                      <th>Aviso</th>
+                      <th>Mensagem</th>            
                       <th>Último Acesso</th>
                     </tr>
                   </thead>
@@ -103,18 +101,20 @@
                       </td>
                       <td><?php echo $log['nomeCad'] ?></td>
                       <td>
-                        
-                         <?php 
+                        <?php
+                         if($log['level'] == "INFO"){
+                            echo "<div class='badge badge-primary'>$log[level]</div>";
+                          }
+                          if($log['level'] == "WARNING"){
+                            echo "<div class='badge badge-warning'>$log[level]</div>";
+                          }
+                          if($log['level'] == "DANGER"){
+                            echo "<div class='badge badge-danger'>$log[level]</div>";
+                          }
+                        ?>
 
-                           $dataN = $log['dataN'];
-                           echo date('d/m/Y', strtotime($dataN));
-
-                         ?>
-                    
-                     </td>
-                      <td><?php echo $log['genero'] ?></td>
-                      <td><?php echo $log['cpf'] ?></td>
-                      <td><?php echo $log['cep'] ?></td>
+                      </td>
+                      <td><?php echo $log['msg'] ?></td>
                       <td><?php $dataLog = $log['dateLogging']; echo date('d/m/Y H:i:s', strtotime($dataLog));?></td>
                     </tr>
                   </tbody>

@@ -24,8 +24,14 @@ if(isset($_POST['log'])){
       header ('location:dashboard.php');
 
      logMsg( "Entrou em login" );
+
+     if($f['status_user'] == 1){
+        echo 
+        "<script>alert('Sua conta foi bloqueada!')</script>";
+     }
+
    }
-   
+
    else{
        echo 
        "<script>alert('Email e Senha Incorretos')</script>";

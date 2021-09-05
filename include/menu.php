@@ -110,7 +110,7 @@
                 <li class="nav-item">
                   <a href="info_planos.php" class="nav-link">
                     <i class="nav-icon far fa-circle text-success"></i>
-                    <p>Informações</p>
+                    <p>Pagamento</p>
                   </a>
                 </li>
             </ul>
