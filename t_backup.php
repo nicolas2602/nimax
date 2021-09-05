@@ -13,7 +13,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="shortcut icon" href="imagem/NimaxL.png" />
-    <title>NIMAX | Empresas</title>
+    <title>NIMAX | Total de Backup</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -35,7 +35,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Total de Empresas</h1>
+            <h1>Total de Backup</h1>
           </div>
           <div class="col-sm-6">
             <?php include 'include/tempo.php' ?>
@@ -52,8 +52,8 @@
         <div class="row">
           <div class="col-12">
             <div class="card">
-              <div class="card-header bg-warning">
-                <h3 class="card-title">Empresas</h3>
+              <div class="card-header bg-white">
+                <h3 class="card-title">Documentos</h3>
 
                 <div class="card-tools">
                   <div class="input-group input-group-sm" style="width: 150px;">
@@ -75,47 +75,41 @@
                       <th>ID</th>
                       <th>Foto</th>
                       <th>Nome</th>
-                      <th>Data de Nascimento</th>
-                      <th>Gênero</th>
-                      <th>CNPJ</th>
-                      <th>Empresa</th>
+                      <th>Nome do Projeto</th>
+                      <th>Data do Backup</th>
                     </tr>
                   </thead>
                   <?php
                       $sq=
                       "
-                      select * from empresa_cliente as p
-                      inner join cadastro as cp on cp.IdCadastro = P.fk_IdCadastro
-                      where fk_idProfile=2 
+                      select * from backup as ry
+                      inner join cadastro as y on y.IdCadastro = ry.fk_IdCadastro
+                      where fk_idProfile=2
                       ";
 
                       $qu=mysqli_query($con,$sq);
-                      while($emp=  mysqli_fetch_assoc($qu)){
+                      while($bac=  mysqli_fetch_assoc($qu)){
                     ?>
                   <tbody>
                     <tr>
-                      <td><?php echo $emp['IdCadastro'] ?></td>
+                      <td><?php echo $bac['IdCadastro'] ?></td>
                       <td>
                         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                           <div class="image">
-                          <img src="<?php echo $emp['foto'];?>" class="img-circle elevation-2" alt="<?php echo $emp['IdCadastro'] ?>">
+                          <img src="<?php echo $bac['foto'];?>" class="img-circle elevation-2" alt="<?php echo $bac['IdCadastro'] ?>">
                           </div>
                         </div>
                       </td>
-                      <td><?php echo $emp['nomeCad'] ?></td>
+                      <td><?php echo $bac['nomeCad'] ?></td>
+                      <td><?php echo $bac['nomeBackup'] ?></td>
                       <td>
-                        
-                         <?php 
+                          <?php 
+ 
+                           $dataBac= $bac['dataBackup'] ;
+                           echo date('d/m/Y H:i:s', strtotime($dataBac));
 
-                           $dataN = $emp['dataN'];
-                           echo date('d/m/Y', strtotime($dataN));
-
-                         ?>
-                    
-                     </td>
-                      <td><?php echo $emp['genero'] ?></td>
-                      <td><?php echo $emp['cnpj'] ?></td>
-                      <td><?php echo $emp['nomeEmpresa'] ?></td>
+                          ?>
+                      </td>
                          
                     </tr>
                   </tbody>
@@ -134,16 +128,18 @@
     <!-- /.content -->
   </div>
 
-  <?php include 'include/footer.php' ?>
-
+  
+<?php include 'include/footer.php' ?>
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
     <!-- Control sidebar content goes here -->
   </aside>
+  
   <!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->
-<?php include 'include/script.php'?>
+                      <?php include 'include/script.php'?>
+
 <!-- jQuery -->
 <script src="plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
@@ -151,11 +147,11 @@
 <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
 <!-- AdminLTE App -->
-<script>
+<!-- <script>
 $(function () {
   bsCustomFileInput.init();
 });
-</script>
+</script> -->
 
 </body>
 </html>

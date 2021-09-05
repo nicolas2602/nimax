@@ -202,15 +202,17 @@
                             echo date('d/m/Y H:i:s', strtotime($dataAgenda));
                           ?>
                       </td>
-                      <td>
-                              
-                         <a href="excluir_agd.php?del=<?php echo $am['IdAgenda'] ?>&<?php echo $am['fk_cadastro'] ?>
-                                &<?php echo $am['dataAgenda'] ?>"
-                                class="btn btn-danger">
-                                <i class="fas fa-trash-alt"></i>
-                        </a> 
-
-                      </td>
+                    <?php 
+                    if($_SESSION['profile'] == 'Admin'){
+                      echo" 
+                      <td>       
+                         <a href='excluir_agd.php?del=$am[IdAgenda]&$am[fk_cadastro]&$am[dataAgenda]' class='btn btn-danger'>
+                            <i class='fas fa-trash-alt'></i>
+                         </a> 
+                      </td>";
+                    }
+                     
+                    ?>
                     
                     </tr>
                     <?php } ?>

@@ -40,6 +40,16 @@
   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
 </head>
+<style>
+  body{
+    overflow-x: hidden;
+  }
+    #barchart_values{
+    /* padding-top:38px; */
+    padding-left: 70px;
+    
+}
+</style>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
    <?php include 'include/navbar.php'; ?>
@@ -166,53 +176,103 @@
           <section class="content">
             <div class="container-fluid">
               <div class="row">
-                <div class="col-12">
-                <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-                  <script type="text/javascript">
-                    google.charts.load('current', {'packages':['corechart']});
-                    google.charts.setOnLoadCallback(drawChart);
+                <div class="col-5">
+                  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+                    <script type="text/javascript">
+                      google.charts.load('current', {'packages':['corechart']});
+                      google.charts.setOnLoadCallback(drawChart);
 
-                    function drawChart() {
+                      function drawChart() {
 
-                      var data = google.visualization.arrayToDataTable([
-                        ['Plano', 'Quantidade'],
+                        var data = google.visualization.arrayToDataTable([
+                          ['Plano', 'Quantidade'],
+                          <?php 
+                            $sq="select IdPagamento from paga_pacote where fk_IdPacote=2 order by IdPagamento";
+                            $qu=mysqli_query($con,$sq);
+                            $row=mysqli_num_rows($qu);
+                            
+                            echo"['Prime', $row],";
+                          ?>
                         <?php 
-                          $sq="select IdPagamento from paga_pacote where fk_IdPacote=2 order by IdPagamento";
-                          $qu=mysqli_query($con,$sq);
-                          $row=mysqli_num_rows($qu);
-                          
-                          echo"['Prime', $row],";
+                            $sq="select IdPagamento from paga_pacote where fk_IdPacote=1 order by IdPagamento";
+                            $qu=mysqli_query($con,$sq);
+                            $row=mysqli_num_rows($qu);
+                            
+                            echo"['Standart', $row],";
                         ?>
-                      <?php 
-                          $sq="select IdPagamento from paga_pacote where fk_IdPacote=1 order by IdPagamento";
-                          $qu=mysqli_query($con,$sq);
-                          $row=mysqli_num_rows($qu);
-                          
-                          echo"['Standart', $row],";
-                      ?>
-                      <?php 
-                          $sq="select IdPagamento from paga_pacote where fk_IdPacote=3 order by IdPagamento";
-                          $qu=mysqli_query($con,$sq);
-                          $row=mysqli_num_rows($qu);
-                          
-                          echo"['Premium', $row]";
-                      ?>
-                      ]);
+                        <?php 
+                            $sq="select IdPagamento from paga_pacote where fk_IdPacote=3 order by IdPagamento";
+                            $qu=mysqli_query($con,$sq);
+                            $row=mysqli_num_rows($qu);
+                            
+                            echo"['Premium', $row]";
+                        ?>
+                        ]);
 
-                      var options = {
-                        title: 'Gráfico de Planos',
-                        backgroundColor: '#33FF70'
-                      };
+                        var options = {
+                          title: 'Gráfico de Planos',
+                          backgroundColor: '#33FF70'
+                        };
 
-                      var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+                        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
 
-                      chart.draw(data, options);
-                    }
-                  </script>
-                   <div id="piechart" style="width: 1190px; height: 450px"></div>
+                        chart.draw(data, options);
+                      }
+                    </script>
+                   <div id="piechart" style="width: 550px; height: 400px"></div>
 
-                  
                 </div>  
+                <div class="col-7">
+                  <script type="text/javascript">
+                        google.charts.load("current", {packages:["corechart"]});
+                        google.charts.setOnLoadCallback(drawChart);
+                        function drawChart() {
+                          var data = google.visualization.arrayToDataTable([
+                            ["Planos", "Quantidade", { role: "style" } ],
+                            <?php 
+
+                              $sq="select IdPagamento from paga_pacote where fk_IdPacote=1 order by IdPagamento";
+                              $qu=mysqli_query($con,$sq);
+                              $row=mysqli_num_rows($qu);
+
+                              echo"['Standart', $row, 'red'],";
+                            ?>
+                            <?php 
+                              $sq="select IdPagamento from paga_pacote where fk_IdPacote=2 order by IdPagamento";
+                              $qu=mysqli_query($con,$sq);
+                              $row=mysqli_num_rows($qu);
+                              echo"['Prime', $row, 'silver'],";
+                            ?>
+                            <?php 
+                              $sq="select IdPagamento from paga_pacote where fk_IdPacote=3 order by IdPagamento";
+                              $qu=mysqli_query($con,$sq);
+                              $row=mysqli_num_rows($qu);
+                              echo"['Premium', $row, 'gold']";
+                            ?>
+                          ]);
+
+                          var view = new google.visualization.DataView(data);
+                          view.setColumns([0, 1,
+                                          { calc: "stringify",
+                                            sourceColumn: 1,
+                                            type: "string",
+                                            role: "annotation" },
+                                          2]);
+
+                          var options = {
+                            title: "Quantidade de Planos",
+                            backgroundColor: '#DFDECC',
+                            width: 600,
+                            height: 400,
+                            bar: {groupWidth: "95%"},
+                            legend: { position: "none" },
+                          };
+                          var chart = new google.visualization.BarChart(document.getElementById("barchart_values"));
+                          chart.draw(view, options);
+                      }
+                  </script>
+                  <div id="barchart_values" style="width: 850px; height: 450px;"></div>
+                </div>
               </div>
             </div>
           </section><br>

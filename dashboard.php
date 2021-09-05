@@ -159,7 +159,28 @@
               <a href="t_emp.php" class="small-box-footer">Vizualizar <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
- 
+          
+          <div class="col-lg-4 col-6">
+            <!-- small box -->
+            <div class="small-box bg-white">
+              <div class="inner">
+
+                 <?php 
+                    $sq="SELECT IdBackup FROM backup order by IdBackup";
+                    $qu=mysqli_query($con,$sq);
+                    $row=mysqli_num_rows($qu);
+                    
+                    echo"<h3>$row</h3>";
+                ?>
+
+                <p>Total de Backup</p>
+              </div>
+              <div class="icon">
+              <i class="nav-icon fas fa-file-alt"></i>
+              </div>
+              <a href="t_backup.php" class="small-box-footer">Vizualizar <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
           <!-- ./col -->
         </div>
         <!-- /.row -->

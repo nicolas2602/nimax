@@ -7,7 +7,6 @@ if(isset($_POST['up'])){
     $dataN=$_POST['dataN'];
     $city=$_POST['city'];
     $estado=$_POST['est'];
-    $email=$_POST['email'];
     $tel=$_POST['tel'];
     $tel2=$_POST['tel2'];
 
@@ -19,7 +18,7 @@ if(isset($_POST['up'])){
         $img=$_POST['img1'];
     }
 
-        $upPerfil="update cadastro set nomeCad='$nome',dataN='$dataN',cidade='$city',estado='$estado',tel1='$tel',tel2='$tel2',email='$email',foto='$img' 
+        $upPerfil="update cadastro set nomeCad='$nome',dataN='$dataN',cidade='$city',estado='$estado',tel1='$tel',tel2='$tel2',foto='$img' 
             where IdCadastro='$_SESSION[IdCadastro]'";
         mysqli_query($con, $upPerfil);
         header('location:profile.php');
