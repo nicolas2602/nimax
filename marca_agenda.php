@@ -24,6 +24,15 @@
   <link rel="stylesheet" href="dist/css/adminlte.min.css">
 
 </head>
+
+<script>
+   
+   function excAgd(){
+     window.alert("Agenda excluída!");
+   }
+
+</script>
+
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
  
@@ -192,7 +201,7 @@
                               
                          <a href="excluir_agd_admin.php?del=<?php echo $am2['IdAgenda'] ?>&<?php echo $am2['fk_cadastro'] ?>
                                 &<?php echo $am2['dataAgenda'] ?>"
-                                class="btn btn-danger">
+                                class="btn btn-danger" onclick="excAgd()">
                                 <i class="fas fa-trash-alt"></i>
                         </a> 
 

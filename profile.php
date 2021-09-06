@@ -288,78 +288,8 @@
                       <div class="form-group row">
                         <div class="offset-sm-2 col-sm-10">
                           <button type="submit" name="up" class="btn btn-primary">Atualizar</button>
-                          <a href="delete.php" class="btn btn-danger" onclick="return confirm('Deseja excluir a sua conta?***Antes de excluir, verifique se está vazio no botão Limpar***')">Excluir</a>
-
-                          <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#modal-danger">
-                            Limpar
-                          </button>
-
-                          <div class="modal fade col-12" id="modal-danger">
-                            <div class="modal-dialog">
-                              <div class="modal-content ">
-                                <div class="modal-header bg-danger">
-                                  <h4 class="modal-title">Limpeza de Cache</h4>
-                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                  </button>
-                                </div>
-                                <div class="modal-body">
-                                <div class="row">
-                                    <div class="col-12">
-                                      <div class="card">
-                                        <div class="card-header">
-                                          <h3 class="card-title">Limpeza</h3>
-                                        </div>
-                                        <!-- ./card-header -->
-                                        <div class="card-body">
-                                          <table class="table table-bordered table-hover">
-                                            <thead>
-                                              <tr>
-                                                <th>Código</th>
-                                                <th>Data</th>
-                                              </tr>
-                                            </thead>
-
-                                              <?php
-                                                $sq="select * from logging where fk_cadastro='$_SESSION[IdCadastro]'";
-                                                $qu=mysqli_query($con,$sq);
-                                                while($log=  mysqli_fetch_assoc($qu)){
-                                              ?>
-
-                                            <tbody>
-                                              <tr data-widget="expandable-table" aria-expanded="false">
-                                                <td><?php echo $log['IdLogging'] ?></td>
-                                                <td>
-                                                <?php 
-                                                    $dataLogging = $log['dateLogging'];
-                                                    echo date('d/m/Y H:i:s', strtotime($dataLogging));
-                                                ?>
-                                                </td>
-                                                <td>
-                                                  <a href="delete_log.php?del=<?php echo $log['IdLogging']?>
-                                                    &<?php echo $log['dateLogging']?>&<?php echo $log['IdLogging']?>
-                                                    &<?php echo $log['level']?>&<?php echo $log['msg']?>
-                                                    &<?php echo $log['fk_cadastro']?>" class="btn btn-danger">
-                                                    <i class="fas fa-trash-alt"></i>
-                                                  </a>
-                                                </td>
-                                              </tr>
-                                              
-                                            </tbody>
-                                            <?php } ?>
-                                          </table>
-                                        </div>
-                                        <!-- /.card-body -->
-                                      </div>
-                                      <!-- /.card -->
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                              <!-- /.modal-content -->
-                            </div>
-                            <!-- /.modal-dialog -->
-                          </div>
+                          <a href="delete.php" class="btn btn-danger" onclick="return confirm('Deseja excluir a sua conta?***Antes de excluir, aperte no botão Limpar***')">Excluir</a>
+                          <a href="limpeza.php" class="btn btn-secondary" onclick="return confirm('Deseja limpar a sua conta?')">Limpar</a>
 
                         </div>
                       </div>

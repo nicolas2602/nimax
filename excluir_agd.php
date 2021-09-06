@@ -4,7 +4,12 @@ include 'php/conexao.php';
 
 $del="DELETE FROM agenda WHERE agenda.IdAgenda = '".$_GET['del']."'";
 
-mysqli_query($con,$del);
-header('location:agenda.php');
+$query=mysqli_query($con,$del);
+
+if($query){
+    echo"<script>alert('Agenda Excluída!')</script>";
+    header('location:agenda.php');
+}
+
 
 ?>
