@@ -68,7 +68,28 @@
           </li>";
            }
           ?>
-          
+         <?php 
+           if($_SESSION['profile']=='Admin'){
+          echo"
+          <li class='nav-item menu-open'>
+            <a href='#' class='nav-link active bg-dark'>
+            <i class='nav-icon fas fa-user'></i>
+              <p>
+                Administrador
+                <i class='right fas fa-angle-left'></i>
+              </p>
+            </a>
+            <ul class='nav nav-treeview'>
+              <li class='nav-item'>
+                <a href='cadastro_admin.php' class='nav-link'>
+                  <i class='nav-icon far fa-circle text-light'></i>
+                  <p>Cadastrar Administrador</p>
+                </a>
+              </li>
+
+            </ul>
+          </li>";}
+          ?>
       
           <li class="nav-item menu-open">
             <a href="#" class="nav-link active bg-primary">

@@ -1,6 +1,6 @@
 <?php 
    include 'php/conexao.php'; 
-   include 'php/insert.php'; 
+   include 'php/insert_admin.php'; 
    include 'php/select2.php';
  
 ?>
@@ -36,7 +36,7 @@
         <div class="container">
             <div class="card" style="width: 40rem; height: 41rem">
                 <div class="card-body" id="cbody">
-                    <h5 style="text-align: center;">Cadastro do Usuário</h5>
+                    <h5 style="text-align: center;">Cadastro do Administrador</h5>
                 
                 <div class="row">
                     <div class="col">
@@ -46,7 +46,7 @@
                                     <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
                                 </svg>
                             </span>
-                            <input class="form-control" type="text" name="user" placeholder="Nome do Usuário" required>
+                            <input class="form-control" type="text" name="user" placeholder="Nome do Administrador" required>
                         </div>
                     </div>
                         <br>
@@ -202,7 +202,7 @@
 
                     <div class="row">
                         <div class="col">
-                           <a class="btn btn-primary mb-2" href="index.php">Voltar</a>
+                           <a class="btn btn-primary mb-2" href="profile.php">Voltar</a>
                              <input class="btn btn-success mb-2" type="submit" name="cad" value="Cadastrar">
                         </div>
                     </div>
