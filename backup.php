@@ -64,7 +64,7 @@
                         <div class="card-body">
                         <div class="form-group">
                             <label for="exampleInputEmail1">Nome do Projeto:</label>
-                            <input type="text" name="proj" class="form-control" id="exampleInputEmail1" placeholder="Digite o problema" required>
+                            <input type="text" name="proj" class="form-control" id="exampleInputEmail1" placeholder="Digite o nome arquivo" required>
                         </div>
                 
                         <div class="form-group">
