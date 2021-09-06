@@ -289,7 +289,6 @@
                         <div class="offset-sm-2 col-sm-10">
                           <button type="submit" name="up" class="btn btn-primary">Atualizar</button>
                           <a href="delete.php" class="btn btn-danger" onclick="return confirm('Deseja excluir a sua conta?***Antes de excluir, aperte no botão Limpar***')">Excluir</a>
-                          <a href="limpeza.php" class="btn btn-secondary" onclick="return confirm('Deseja limpar a sua conta?')">Limpar</a>
 
                         </div>
                       </div>

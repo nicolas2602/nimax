@@ -60,5 +60,5 @@ include 'php/select2.php';
 
 $sq="delete from cadastro where IdCadastro='$_SESSION[IdCadastro]'";
 mysqli_query($con,$sq);
-// header('location:index.php');
+header('location:index.php');
 ?>
