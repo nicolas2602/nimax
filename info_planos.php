@@ -107,7 +107,7 @@
 
                       <a href="del_planos.php?del=<?php echo $pla2['IdPagamento'] ?>
                                 &<?php echo $pla2['formaPag'] ?>&<?php echo $pla2['fk_IdPacote'] ?>&<?php echo $pla2['fk_IdCadastro'] ?>"
-                                class="btn btn-danger" onclick="return confirm('Deseja cancelar o plano?')">
+                                class="btn btn-danger">
                                 <i class="fas fa-trash-alt"></i>
                            </a> 
                       <input type="hidden" name="pag_pac" value="<?= $pla2['IdPagamento'] ?>">

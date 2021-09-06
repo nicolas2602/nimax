@@ -455,7 +455,7 @@
                         <div class="offset-sm-2 col-sm-10">
                           <div class="checkbox">
                             <label>
-                              <input type="checkbox"> Deseja atualizar o seu email?</a>
+                              <input type="checkbox"> Deseja atualizar o seu email ou sua senha?</a>
                             </label>
                           </div>
                         </div>
