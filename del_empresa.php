@@ -16,7 +16,7 @@ if(isset($_POST['del'])){
 
     $del="delete from empresa_cliente where IdEmpresa={$id}";
     mysqli_query($con, $del);
-    header('location:dashboard.php');
+    header('location:empresa.php');
 
 }
 

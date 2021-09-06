@@ -123,11 +123,80 @@
                   <?php } ?>
                 </table>
               </div>
+
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header bg-success">
+                <h3 class="card-title">Pagamento concluído</h3>
+
+                <div class="card-tools">
+                  <div class="input-group input-group-sm" style="width: 150px;">
+                    <div class="input-group-append">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body table-responsive p-0">
+                <table class="table table-hover text-nowrap">
+                  <thead>
+                    <tr>
+                      <th>Código</th>
+                      <th>Data Pagamento</th>
+                      <th>Assinante</th>
+                    </tr>
+                  </thead>
+                   <?php
+                      $sq=
+                      "
+                      select * from compra as pi
+                      inner join cadastro as i on i.IdCadastro = pi.fk_IdCadastro
+                      inner join paga_pacote as p on p.IdPagamento= pi.fk_IdPagamento
+                      where IdCadastro = '$_SESSION[IdCadastro]'
+                      ";
+
+                      $qu=mysqli_query($con,$sq);
+                      while($conc=  mysqli_fetch_assoc($qu)){
+                    ?>
+                  <tbody>
+                    <tr>
+                      <td><?php echo $conc['IdCompra'] ?></td>
+                      <td>
+                        <?php 
+                          $dataCompra = $conc['dataCompra'];
+                          echo date('d/m/Y H:i:s', strtotime($dataCompra));
+                        ?>
+                      </td>
+                      <td><?php echo $conc['nomeCad'] ?></td>
+                    <form method="post" enctype="multipart/form-data">  
+                      <td>
+
+                      <a href="del_planos2.php?del=<?php echo $conc['IdCompra'] ?>
+                                &<?php echo $conc['dataCompra'] ?>&<?php echo $conc['fk_IdPagamento'] ?>&<?php echo $conc['fk_IdCadastro'] ?>"
+                                class="btn btn-danger" onclick="return confirm('Deseja cancelar o plano?')">
+                                <i class="fas fa-trash-alt"></i>
+                      </a> 
+                                 
+                      </td>
+                    </form>
+                    </tr>
+                  </tbody>
+                  <?php } ?>
+                </table>
+              </div>
+
               <!-- /.card-body -->
             </div>
             <!-- /.card -->
           </div>
         </div>
+
+
 
 
       </div><!-- /.container-fluid -->

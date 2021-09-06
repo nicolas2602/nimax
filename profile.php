@@ -132,8 +132,8 @@
             <div class="card">
               <div class="card-header p-2">
                 <ul class="nav nav-pills">
-                  <li class="nav-item"><a class="nav-link active" href="#timeline" data-toggle="tab">Mensagem</a></li>
-                  <li class="nav-item"><a class="nav-link" href="#settings" data-toggle="tab">Configuração</a></li>
+                  <li class="nav-item"><a class="nav-link" href="#timeline" data-toggle="tab">Mensagem</a></li>
+                  <li class="nav-item"><a class="nav-link active" href="#settings" data-toggle="tab">Configuração</a></li>
                   <li class="nav-item"><a class="nav-link" href="#settings2" data-toggle="tab">Configuração Email e Senha</a></li>
                 </ul>
               </div><!-- /.card-header -->
