@@ -5,6 +5,9 @@ include 'conexao.php';
 if(isset($_POST['up'])){
     $nome=$_POST['nome'];
     $dataN=$_POST['dataN'];
+    $cpf=$_POST['cpf'];
+    $cep=$_POST['cep'];
+    $end=$_POST['end'];
     $city=$_POST['city'];
     $estado=$_POST['est'];
     $tel=$_POST['tel'];
@@ -18,7 +21,7 @@ if(isset($_POST['up'])){
         $img=$_POST['img1'];
     }
 
-        $upPerfil="update cadastro set nomeCad='$nome',dataN='$dataN',cidade='$city',estado='$estado',tel1='$tel',tel2='$tel2',foto='$img' 
+        $upPerfil="update cadastro set nomeCad='$nome',dataN='$dataN',cpf='$cpf',cep='$cep',endereco='$end',cidade='$city',estado='$estado',tel1='$tel',tel2='$tel2',foto='$img' 
             where IdCadastro='$_SESSION[IdCadastro]'";
         mysqli_query($con, $upPerfil);
         header('location:profile.php');

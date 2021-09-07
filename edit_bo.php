@@ -33,7 +33,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Fale Conosco</h1>
+            <h1>Editar mensagem</h1>
           </div>
           <div class="col-sm-6">
             <?php include 'include/tempo.php'; ?>
@@ -49,9 +49,9 @@
           <!-- left column -->
           <div class="col-md-12">
             <!-- jquery validation -->
-            <div class="card card-danger">
+            <div class="card card-primary">
               <div class="card-header">
-                <h3 class="card-title">Relatar o problema</h3>
+                <h3 class="card-title">Atualizar o problema</h3>
               </div>
               <!-- /.card-header -->
               <!-- form start -->
@@ -75,7 +75,7 @@
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer">
-                  <input type="submit" name="up" class="btn btn-primary" placeholder="Editar">
+                  <input type="submit" name="up" class="btn btn-primary" value="Editar">
                 </div>
               </form>
             </div>

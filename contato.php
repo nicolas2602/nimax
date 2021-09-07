@@ -60,7 +60,7 @@
                       <h5 class="lead"><b>Nicolas H. Yonekawa</b></h5>
                       <p class="text-muted text-sm"><b>Sobre: </b> Estudante do E.M Curso Técnico UNASP-HT  </p>
                       <ul class="ml-4 mb-0 fa-ul text-muted">
-                        <li class="small"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span> Email: nicolasyonekwa@gmail.com</li>
+                        <li class="small"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span> E-mail: nicolasyonekwa@gmail.com</li>
                       </ul>
                     </div>
                     <div class="col-5 text-center">
@@ -82,7 +82,7 @@
                       <h2 class="lead"><b>Marcus V. de Andrade</b></h2>
                       <p class="text-muted text-sm"><b>Sobre: </b> Estudante do E.M Curso Técnico UNASP-HT  </p>
                       <ul class="ml-4 mb-0 fa-ul text-muted">
-                         <li class="small"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span> Email: marcusagameiro@gmail.com</li>
+                         <li class="small"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span> E-mail: marcusagameiro@gmail.com</li>
                       </ul>
                     </div>
                     <div class="col-5 text-center">
@@ -104,7 +104,7 @@
                       <h2 class="lead"><b>Emmanuel Z. de Sá</b></h2>
                       <p class="text-muted text-sm"><b>Sobre: </b> Estudante do E.M Curso Técnico UNASP-HT  </p>
                       <ul class="ml-4 mb-0 fa-ul text-muted">
-                         <li class="small"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span> Email: emmanuelzague@gmail.com</li>
+                         <li class="small"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span> E-mail: emmanuelzague@gmail.com</li>
                       </ul>
                     </div>
                     <div class="col-5 text-center">

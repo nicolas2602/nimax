@@ -113,7 +113,7 @@
 
                 <hr>
 
-                <strong><i class="fas fa-envelope mr-1"></i> Email</strong>
+                <strong><i class="fas fa-envelope mr-1"></i> E-mail</strong>
                 <p class="text-muted"><?php echo $f['email'];?></p>
                   
                 <hr>
@@ -134,7 +134,7 @@
                 <ul class="nav nav-pills">
                   <li class="nav-item"><a class="nav-link" href="#timeline" data-toggle="tab">Mensagem</a></li>
                   <li class="nav-item"><a class="nav-link active" href="#settings" data-toggle="tab">Configuração</a></li>
-                  <li class="nav-item"><a class="nav-link" href="#settings2" data-toggle="tab">Configuração Email e Senha</a></li>
+                  <li class="nav-item"><a class="nav-link" href="#settings2" data-toggle="tab">Configuração E-mail e Senha</a></li>
                 </ul>
               </div><!-- /.card-header -->
               <div class="card-body">
@@ -242,6 +242,24 @@
                         </div>
                       </div>
                       <div class="form-group row">
+                        <label for="inputSkills" class="col-sm-2 col-form-label">CPF</label>
+                        <div class="col-sm-10">
+                          <input type="text" class="form-control" name="cpf" id="inputSkills" value="<?php echo $f['cpf'];?>">
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label for="inputSkills" class="col-sm-2 col-form-label">CEP</label>
+                        <div class="col-sm-10">
+                          <input type="text" class="form-control" name="cep" id="inputSkills" value="<?php echo $f['cep'];?>">
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label for="inputSkills" class="col-sm-2 col-form-label">Endereço Completo</label>
+                        <div class="col-sm-10">
+                          <input type="text" class="form-control" name="end" id="inputSkills" value="<?php echo $f['endereco'];?>">
+                        </div>
+                      </div>
+                      <div class="form-group row">
                         <label for="inputSkills" class="col-sm-2 col-form-label">Cidade</label>
                         <div class="col-sm-10">
                           <input type="text" class="form-control" name="city" id="inputSkills" value="<?php echo $f['cidade'];?>">
@@ -288,7 +306,7 @@
                       <div class="form-group row">
                         <div class="offset-sm-2 col-sm-10">
                           <button type="submit" name="up" class="btn btn-primary">Atualizar</button>
-                          <a href="delete.php" class="btn btn-danger" onclick="return confirm('Deseja excluir a sua conta?***Antes de excluir, aperte no botão Limpar***')">Excluir</a>
+                          <a href="delete.php" class="btn btn-danger" onclick="return confirm('Deseja excluir a sua conta?')">Excluir</a>
 
                         </div>
                       </div>
@@ -299,7 +317,7 @@
                     <form class="form-horizontal" method="post" enctype="multipart/form-data">
         
                       <div class="form-group row">
-                        <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
+                        <label for="inputEmail" class="col-sm-2 col-form-label">E-mail</label>
                         <div class="col-sm-10">
                           <input type="email" class="form-control" name="emailN" id="inputEmail" value="<?php echo $f['email'] ?>" required>
                         </div>
@@ -384,7 +402,7 @@
                         <div class="offset-sm-2 col-sm-10">
                           <div class="checkbox">
                             <label>
-                              <input type="checkbox"> Deseja atualizar o seu email ou sua senha?</a>
+                              <input type="checkbox"> Deseja atualizar o seu e-mail ou sua senha?</a>
                             </label>
                           </div>
                         </div>
