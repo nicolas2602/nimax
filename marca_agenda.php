@@ -185,6 +185,7 @@
                       <?php 
                         $sql2="select * from agenda as cp 
                         inner join cadastro as c on c.IdCadastro = cp.fk_cadastro
+                        order by IdAgenda
                         ";
                         $qu2=mysqli_query($con,$sql2);
                         while($am2= mysqli_fetch_assoc($qu2)){
