@@ -85,7 +85,7 @@
                     <tr>
                       <th>ID</th>
                       <th>Nome</th>
-                      <th>Data Hora</th>
+                      <th>Data e Hora</th>
                       <th>Problema</th>
                       <th>Marcar</th>    
                     </tr>
@@ -117,7 +117,8 @@
                       <td>                      
                         <div class="input-group input-group-sm">
                           <input type="datetime-local" class="form-control" name="time2" value="<?= $agenda2['dataAgenda']; ?>" required>
-                          <input type="hidden" name="idusuario2" value="<?= $agenda2['IdCadastro']; ?>">
+                          <input type="hidden" name="idusuario" value="<?= $agenda2['IdCadastro']; ?>">
+                          <input type="hidden" name="id" value="<?= $agenda2['IdAgenda']; ?>">
                             <span class="input-group-append">
                               <button type="submit" name="marc2" class="btn btn-success btn-flat">
                                 <i class="fas fa-check"></i>
@@ -176,6 +177,7 @@
                       <th>Código</th>
                       <th>Usuário</th>
                       <th>Data marcada</th>
+                      <th>Horário marcado</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -194,7 +196,12 @@
                       <td><?php echo $am2['nomeCad']?></td>
                       <td><?php  
                             $dataAgenda = $am2['dataAgenda'];
-                            echo date('d/m/Y H:i:s', strtotime($dataAgenda));
+                            echo date('d/m/Y', strtotime($dataAgenda));
+                          ?>
+                      </td>
+                      <td><?php  
+                            $dataAgenda = $am2['dataAgenda'];
+                            echo date('H:i:s', strtotime($dataAgenda));
                           ?>
                       </td>
                       <td>

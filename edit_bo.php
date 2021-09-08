@@ -59,6 +59,7 @@
                 <div class="card-body">
                   <div class="form-group">
                     <label for="exampleInputEmail1">Problema</label>
+                    <input type="HIDDEN" name="id" value="<?= $resultProb['IdProblema'] ?>">
                     <input type="text" name="bo" class="form-control" id="exampleInputEmail1" value="<?php echo $resultProb['descProblema'] ?>" required>
                   </div>
           

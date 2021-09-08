@@ -21,14 +21,17 @@ if(isset($_POST['log'])){
       $f= mysqli_fetch_assoc($qu);
       $_SESSION['IdCadastro']=$f['IdCadastro'];
       $_SESSION['profile']=$f['nameProfile'];
-      header ('location: profile.php');
 
-     logMsg( "Entrou em login" );
-
-     if($f['status_user'] == 1){
-        echo 
-        "<script>alert('Sua conta foi bloqueada!')</script>";
+      
+     if($_SESSION['profile'] == 'Admin'){
+        header("location: dashboard.php");
      }
+     if($_SESSION['profile'] == 'User'){
+
+      header("location: profile.php");
+      logMsg( "Entrou em login" );
+   }
+
 
    }
 

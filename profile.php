@@ -181,6 +181,7 @@
                           ?>
                         <tbody>
                           <tr>
+                            <input type="HIDDEN" name="id" value="<?= $msg['IdProblema'] ?>">
                             <td><?php echo $msg['nomeCad'] ?></td>
                             <td>
                               <?php 

@@ -181,6 +181,28 @@
               <a href="t_backup.php" class="small-box-footer">Vizualizar <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
+
+          <div class="col-lg-4 col-6">
+            <!-- small box -->
+            <div class="small-box bg-danger">
+              <div class="inner">
+
+                 <?php 
+                    $sq="SELECT IdAgenda FROM agenda order by IdAgenda";
+                    $qu=mysqli_query($con,$sq);
+                    $row=mysqli_num_rows($qu);
+                    
+                    echo"<h3>$row</h3>";
+                ?>
+
+                <p>Agendas Pendentes</p>
+              </div>
+              <div class="icon">
+              <i class="fas fa-calendar-alt"></i>
+              </div>
+              <a href="t_agenda.php" class="small-box-footer">Vizualizar <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
           <!-- ./col -->
         </div>
         <!-- /.row -->

@@ -4,9 +4,8 @@
    include 'select2.php';
 
    if(isset($_POST['marc2'])){
-    
     $time = $_POST['time2'];
-    $user = (int)$_POST['idusuario2'];
+    $user = (int)$_POST['idusuario'];
 
     $sqlGetAgenda="select * from agenda where fk_cadastro='$user'";
     $queryGetAgenda= mysqli_query($con, $sqlGetAgenda);

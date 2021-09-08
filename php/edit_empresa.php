@@ -3,6 +3,7 @@ include 'conexao.php';
 include 'select2.php';
 
 if(isset($_POST['up'])){
+    $id = $_POST['id'];
     $nome=$_POST['nomeEmp'];
     $serv=$_POST['tserv'];
     $end=$_POST['end'];
@@ -10,11 +11,10 @@ if(isset($_POST['up'])){
     $city=$_POST['city'];
     $estado=$_POST['est'];
     $parc=$_POST['parc'];
-    $user=$_SESSION['IdCadastro'];
 
  
      $upEmp="update empresa_cliente set nomeEmpresa='$nome',tservico='$serv',endereco='$end',bairro='$bairro',cidade_empresa='$city',estado_empresa='$estado',parceria='$parc'
-                where fk_IdCadastro='$user'";        
+                where IdEmpresa={$id} and fk_IdCadastro='$_SESSION[IdCadastro]'";        
          mysqli_query($con, $upEmp);
          header ('location:empresa.php');    
 

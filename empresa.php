@@ -97,7 +97,7 @@
                           <a href="up_empresa.php?IdEmpresa=<?php echo $emp2['IdEmpresa'] ?>&cnpj=<?php echo $emp2['cnpj'] ?>
                                   &nomeEmpresa=<?php echo $emp2['nomeEmpresa'] ?>&tservico=<?php echo $emp2['tservico'] ?>&endereco=<?php echo $emp2['endereco'] ?>
                                   &bairro=<?php echo $emp2['bairro'] ?>&cidade_empresa=<?php echo $emp2['cidade_empresa'] ?>&estado_empresa=<?php echo $emp2['estado_empresa'] ?>
-                                  &parceria=<?php echo $emp2['parceria'] ?>&fk_IdCadastro=<?php echo $emp2['fk_IdCadastro'] ?>" 
+                                  &parceria=<?php echo $emp2['parceria'] ?>&fk_IdCadastro=<?php $_SESSION['IdCadastro'] ?>" 
                               class="btn btn-primary mb-2">
                               <i class="fas fa-pencil-alt"></i>
                           </a>

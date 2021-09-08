@@ -36,8 +36,8 @@
             <div class="card" style="width: 40rem; height: 34rem">
                 <div class="card-body" id="cbody">
                     <h5 style="text-align: center;">Atualização Empresarial</h5>
-                <input type="hidden" value="<?php echo $resultEmp['IdEmpresa'] ?>" name="id">
-                <input type="hidden" value="<?php echo $resultEmp['cnpj'] ?>" name="cnpj">
+                <input type="hidden" name="id" value="<?php echo $resultEmp['IdEmpresa'] ?>" >
+                <input type="hidden" name="cnpj" value="<?php echo $resultEmp['cnpj'] ?>" >
                 <div class="row">
                     <div class="col">
                     <label><i>Nome da empresa</i></label>

@@ -18,7 +18,7 @@
 
 <style>
    body{
-    padding-top:210px;
+    padding-top:190px;
     padding-left: 410px;
     background-image: url(imagem/fundo.jpg);
     background-attachment: fixed;
@@ -33,10 +33,9 @@
 
 <form method="post" enctype="multipart/form-data">
         <div class="container">
-            <div class="card" style="width: 40rem; height: 16rem">
+            <div class="card" style="width: 40rem; height: 22rem">
                 <div class="card-body" id="cbody">
                     <h5 style="text-align: center;">Atualização Backup</h5>
-                <input type="hidden" value="<?php echo $resulBack['dataBackup'] ?>" name="data">
                 <div class="row">
                     <div class="col">
                     <label><i>Nome do arquivo</i></label>
@@ -48,6 +47,23 @@
                                 </svg>
                             </span>
                             <input class="form-control" type="text" name="proj" value="<?php echo $resultBack['nomeBackup'] ?>" placeholder="Nome da empresa" required>
+                            <input class="form-control" type="hidden" name="id" value="<?= $resultBack['IdBackup'] ?>" placeholder="Nome da empresa" required>
+                        </div>
+                    </div>
+
+                </div><br>
+
+                <div class="row">
+                    <div class="col">
+                    <label><i>Tipo Arquivo</i></label>
+                        <div class="input-group mb-2">
+                            <span class="input-group-text" id="basic-addon1">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-text" viewBox="0 0 16 16">
+                                    <path d="M5 4a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm-.5 2.5A.5.5 0 0 1 5 6h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zM5 8a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm0 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1H5z"/>
+                                    <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm10-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1z"/>
+                                </svg>
+                            </span>
+                            <input class="form-control" readonly="readonly" name="arq" value="<?php echo $resultBack['arquivoBackup'] ?>" placeholder="Arquivo" required>
                         </div>
                     </div>
 
@@ -70,6 +86,14 @@
             </div>
         </div>
     </form>
+
+    <script>
+
+        $(".custom-file-input").on("change", function() {
+        var fileName = $(this).val().split("\\").pop();
+        $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+        });
+    </script>
     
 </body>
 </html>
