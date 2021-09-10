@@ -42,7 +42,7 @@
       </div><!-- /.container-fluid -->
     </section>
 
-    <form method="post" enctype="multipart/form-data">
+  <form method="post" enctype="multipart/form-data">
     <section class="content">
       <div class="container-fluid">
         <div class="row">
@@ -91,7 +91,7 @@
       </div>
     </section>
 
-    </form>
+  </form>
 
   </div>
 

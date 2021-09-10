@@ -100,17 +100,17 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
-              <li class="nav-item">
+              <!-- <li class="nav-item">
                 <a href="cadastro_empresa.php" class="nav-link">
                   <i class="nav-icon far fa-circle text-primary"></i>
                   <p>Cadastrar</p>
                 </a>
-              </li>
+              </li> -->
              
                 <li class="nav-item">
                   <a href="empresa.php" class="nav-link">
                     <i class="nav-icon far fa-circle text-primary"></i>
-                    <p>Informações</p>
+                    <p>Cadastrar Empresa</p>
                   </a>
                 </li>
             </ul>

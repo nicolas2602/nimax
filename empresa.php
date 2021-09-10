@@ -1,5 +1,6 @@
 <?php 
    include 'php/conexao.php'; 
+   include 'php/insert2.php'; 
    include 'php/select2.php';
  
 ?>
@@ -41,6 +42,129 @@
         </div>
       </div><!-- /.container-fluid -->
     </section>
+
+    <form method="post" enctype="multipart/form-data">
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <!-- left column -->
+          <div class="col-md-12">
+            <!-- jquery validation -->
+            <div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title">Cadastrar Empresa</h3>
+              </div>
+              <!-- /.card-header -->
+              <!-- form start -->
+              <form id="quickForm">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-6">
+                      <div class="form-group">
+                        <label for="exampleInputEmail1">CNPJ</label>
+                        <input type="text" name="cnpj"class="form-control" id="exampleInputEmail1" placeholder="Digite o CNPJ" required>
+                      </div>
+                    </div>
+                  
+                    <div class="col-6">
+                      <div class="form-group">
+                        <label for="exampleInputEmail1">Nome da Empresa</label>
+                        <input type="text" name="nomeEmp" class="form-control" id="exampleInputEmail1" placeholder="Digite o nome da empresa" required>
+                      </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-6">
+                      <div class="form-group">
+                          <label>Tipos de serviço</label>
+                          <select class="form-control select2bs4" style="width: 100%;" name="tserv" required>
+                            <option selected="selected">...</option>
+                                <option value="Alimentícia">Alimentícia</option>
+                                <option value="Automotivo">Automotivo</option>
+                                <option value="Agropecuária">Agropecuária</option>
+                                <option value="Ecônomica">Ecônomica</option>
+                                <option value="Turismo">Turismo</option>
+                                <option value="Varejista">Varejista</option>
+                                <option value="Marketing">Marketing</option>
+                                <option value="Tecnologia">Tecnologia</option>
+                          </select>
+                      </div>
+                    </div>
+
+                    <div class="col-6">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Endereço</label>
+                        <input type="text" name="end" class="form-control" id="exampleInputEmail1" placeholder="Digite o endereço" required>
+                      </div>
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col-6">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Bairro</label>
+                        <input type="text" name="bairro" class="form-control" id="exampleInputEmail1" placeholder="Digite o bairro" required>
+                      </div>
+                   </div>
+
+                   <div class="col-6">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Cidade</label>
+                        <input type="text" name="city" class="form-control" id="exampleInputEmail1" placeholder="Digite o bairro" required>
+                      </div>
+                   </div>
+                </div>
+
+                 <div class="row">
+                    <div class="col-6">
+                        <div class="form-group">
+                          <label for="exampleInputEmail1">Estado</label>
+                          <input type="text" name="est" class="form-control" id="exampleInputEmail1" placeholder="Digite o estado" required>
+                        </div>
+                     </div>
+
+                     <div class="col-6">
+                      <div class="form-group">
+                          <label>Parceria</label>
+                          <select class="form-control select2bs4" style="width: 100%;" name="parc" required>
+                            <option selected="selected">...</option>
+                            <option value="Sim">Sim</option>
+                            <option value="Não">Não</option>
+                          </select>
+                      </div>
+                    </div>
+
+
+                  </div>
+
+                  <div class="form-group mb-0">
+                    <div class="custom-control custom-checkbox">
+                      <input type="checkbox" name="terms" class="custom-control-input" id="exampleCheck1" required>
+                      <label class="custom-control-label" for="exampleCheck1">Aceita os termos de política e privacidade <a href="#">da empresa</a> X-MAX.</label >
+                    </div>
+                  </div>
+                </div>
+                <!-- /.card-body -->
+                <div class="card-footer">
+                  <input type="submit" name="cad" class="btn btn-success" value="Cadastrar">
+                </div>
+              </form>
+            </div>
+
+          </div>
+    
+          <div class="col-md-6">
+
+          </div>
+       
+        </div>
+
+      </div>
+    </section>
+
+  </form>
 
     <!-- Main content -->
     <section class="content">
