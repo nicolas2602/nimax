@@ -12,7 +12,7 @@ include 'select2.php';
     $upBo = "update problema set descProblema='$bo',msgProblema='$msg' where IdProblema={$id} and fk_cadastro='$user'";
 
     mysqli_query($con, $upBo);
-    header('location: profile.php');
+    header('location: bo.php');
 
     }
 

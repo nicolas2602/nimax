@@ -153,89 +153,89 @@
                  
 
                   <div class="tab-pane" id="timeline">
-                  <div class="row">
-                <div class="col-12">
-                  <div class="card">
-                    <div class="card-header bg-primary">
-                      <h3 class="card-title">Suas mensagens</h3>
+                    <div class="row">
+                      <div class="col-12">
+                        <div class="card">
+                          <div class="card-header bg-primary">
+                            <h3 class="card-title">Suas mensagens</h3>
 
-                      <div class="card-tools">
-                        <div class="input-group input-group-sm" style="width: 150px;">
-                          <input type="text" name="table_search" class="form-control float-right" placeholder="Procurar">
+                            <div class="card-tools">
+                              <div class="input-group input-group-sm" style="width: 150px;">
+                                <input type="text" name="table_search" class="form-control float-right" placeholder="Procurar">
 
-                          <div class="input-group-append">
-                            <button type="submit" class="btn btn-default">
-                              <i class="fas fa-search"></i>
-                            </button>
+                                <div class="input-group-append">
+                                  <button type="submit" class="btn btn-default">
+                                    <i class="fas fa-search"></i>
+                                  </button>
+                                </div>
+                              </div>
+                            </div>
                           </div>
+                          <!-- /.card-header -->
+                          <div class="card-body table-responsive p-0" style="height: 300px;">
+                            <table class="table table-head-fixed text-nowrap ">
+                              <thead>
+                                <tr>
+                                  <th>Nome</th>
+                                  <th>Data</th>
+                                </tr>
+                              </thead>
+                                <?php 
+                                  $sql="select * from problema 
+                                  as c inner join cadastro as r on IdCadastro = c.fk_cadastro
+                                  where IdCadastro='$_SESSION[IdCadastro]' order by IdProblema DESC";
+                                  $qu=mysqli_query($con,$sql);
+                                  while($msg=  mysqli_fetch_assoc($qu)){
+                                
+                                ?>
+                              <tbody>
+                                <tr>
+                                  <input type="HIDDEN" name="id" value="<?= $msg['IdProblema'] ?>">
+                                  <td><?php echo $msg['nomeCad'] ?></td>
+                                  <td>
+                                    <?php 
+                                      $dataProblema = $msg['dataProblema'];
+                                      echo date('d/m/Y H:i:s', strtotime($dataProblema));
+                                  ?>
+                                </td>
+                                <td>
+
+                                <a href="edit_bo.php?IdProblema=<?php echo $msg['IdProblema'] ?>&dataProblema=<?php echo $msg['dataProblema'] ?>
+                                      &descProblema=<?php echo $msg['descProblema'] ?>&msgProblema=<?php echo $msg['msgProblema'] ?>
+                                      &fk_cadastro=<?php echo $msg['fk_cadastro'] ?>"
+                                      class="btn btn-primary">
+                                      <i class="fas fa-pencil-alt"></i>
+                                </a> 
+
+                                    
+                                <a href="del_msg.php?del=<?php echo $msg['IdProblema'] ?>&<?php echo $msg['dataProblema'] ?>
+                                      &<?php echo $msg['descProblema'] ?>&<?php echo $msg['msgProblema'] ?>&<?php echo $msg['fk_cadastro'] ?>"
+                                      class="btn btn-danger" onclick="return confirm('Deseja apagar a mensagem?')">
+                                      <i class="fas fa-trash-alt"></i>
+                                </a> 
+
+
+                                </td>
+                                </tr>
+                                <tr class="expandable-body bg-light">
+                                    <td colspan="5">
+                                      <p>
+                                        <b>Sua mensagem:</b><br/>
+                                      <?php echo $msg['msgProblema']?>
+                                      </p>
+                                    </td>
+                                  </tr>
+
+                              </tbody>
+                              <?php } ?>
+                            </table>
+                          </div>
+                          <!-- /.card-body -->
                         </div>
+                        <!-- /.card -->
                       </div>
                     </div>
-                    <!-- /.card-header -->
-                    <div class="card-body table-responsive p-0" style="height: 300px;">
-                      <table class="table table-head-fixed text-nowrap ">
-                        <thead>
-                          <tr>
-                            <th>Nome</th>
-                            <th>Data</th>
-                          </tr>
-                        </thead>
-                          <?php 
-                            $sql="select * from problema 
-                            as c inner join cadastro as r on IdCadastro = c.fk_cadastro
-                            where IdCadastro='$_SESSION[IdCadastro]' order by IdProblema DESC";
-                            $qu=mysqli_query($con,$sql);
-                            while($msg=  mysqli_fetch_assoc($qu)){
-                          
-                          ?>
-                        <tbody>
-                          <tr>
-                            <input type="HIDDEN" name="id" value="<?= $msg['IdProblema'] ?>">
-                            <td><?php echo $msg['nomeCad'] ?></td>
-                            <td>
-                              <?php 
-                                $dataProblema = $msg['dataProblema'];
-                                echo date('d/m/Y H:i:s', strtotime($dataProblema));
-                             ?>
-                           </td>
-                           <td>
-
-                           <a href="edit_bo.php?IdProblema=<?php echo $msg['IdProblema'] ?>&dataProblema=<?php echo $msg['dataProblema'] ?>
-                                &descProblema=<?php echo $msg['descProblema'] ?>&msgProblema=<?php echo $msg['msgProblema'] ?>
-                                &fk_cadastro=<?php echo $msg['fk_cadastro'] ?>"
-                                class="btn btn-primary">
-                                <i class="fas fa-pencil-alt"></i>
-                           </a> 
-
-                              
-                           <a href="del_msg.php?del=<?php echo $msg['IdProblema'] ?>&<?php echo $msg['dataProblema'] ?>
-                                &<?php echo $msg['descProblema'] ?>&<?php echo $msg['msgProblema'] ?>&<?php echo $msg['fk_cadastro'] ?>"
-                                class="btn btn-danger" onclick="return confirm('Deseja apagar a mensagem?')">
-                                <i class="fas fa-trash-alt"></i>
-                           </a> 
-
-
-                           </td>
-                          </tr>
-                          <tr class="expandable-body bg-light">
-                              <td colspan="5">
-                                <p>
-                                  <b>Sua mensagem:</b><br/>
-                                <?php echo $msg['msgProblema']?>
-                                </p>
-                              </td>
-                            </tr>
-
-                        </tbody>
-                        <?php } ?>
-                      </table>
-                    </div>
-                    <!-- /.card-body -->
                   </div>
-                  <!-- /.card -->
-                </div>
-              </div>
-            </div>
                   
                   <div class="tab-pane" id="settings">
                     <form class="form-horizontal" method="post" enctype="multipart/form-data">
