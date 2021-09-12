@@ -71,7 +71,7 @@
                     <input type="search" name="table_search" class="form-control float-right" placeholder="Procurar">
 
                     <div class="input-group-append">
-                      <button type="submit" class="btn btn-default">
+                      <button type="submit" class="btn btn-default" name="pesq">
                         <i class="fas fa-search"></i>
                       </button>
                     </div>
@@ -185,7 +185,7 @@
                       <?php 
                         $sql2="select * from agenda as cp 
                         inner join cadastro as c on c.IdCadastro = cp.fk_cadastro
-                        order by IdAgenda
+                        order by dataAgenda
                         ";
                         $qu2=mysqli_query($con,$sql2);
                         while($am2= mysqli_fetch_assoc($qu2)){
