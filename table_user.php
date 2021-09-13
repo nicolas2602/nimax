@@ -9,6 +9,27 @@
 </head>
 
 <style>
+    /* body, html {
+    padding: 0px;
+    margin: 0px;
+    border: 0px none;
+    width: 100%;
+    height: 100%;
+    } */
+
+    body{
+        border: 1px solid black;
+
+    }
+    .alinhar{
+        padding-left: 20px;
+    }
+    /* .color{
+        background-color: silver;
+        width: 500px;
+        text-align: center;
+        padding-left: 200px;
+    } */
     ul {
         background-color: #dddddd;
         list-style-type: none;
@@ -44,12 +65,16 @@
 <body> 
    
     <!-- <img src="/imagem/logo1.png" alt="" align="center"> -->
-  <hr>
-    <h1 align="center">NIMAX</h1>
-   <HR>
-
-    <h3>Relatório de Usuários</h3>
-    <table width="100%" border="1px">
+  <div class="color" align="center">
+     <h1 align="center">NIMAX</h1>
+  </div>
+    
+   <HR style="background-color: silver;">
+            <div class="alinhar" style="text-align: justify;">
+               <p style="text-align: justify;"><h3>Relatório de Usuários</h3></P>
+            </div>
+    
+    <table width="95%" border="1px" align="center">
         <thead>
             <tr>
             <th>ID</th>
@@ -89,11 +114,12 @@
             </tr>
         </tbody>
         <?php } ?>
+        <p align="center">2021 - <b>X-MAX</b></p>
     </table>
-    
+<!--     
     <footer>
         <p>2021 - <b>X-MAX</b></p>
-    </footer>
+    </footer> -->
     
 </body>
 </html>
