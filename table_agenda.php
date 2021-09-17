@@ -7,11 +7,10 @@ include 'php/select2.php';
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="shortcut icon" href="imagem/NimaxL.png" />
-    <title>NIMAX | Relatório de Usuários</title>
-
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NIMAX | Relatório de Agendas</title>
 </head>
 
 <style>
@@ -54,7 +53,7 @@ include 'php/select2.php';
     }
 
     th {
-        background-color: #A9E0F1;
+        background-color: #F66150;
     }
 
     footer {
@@ -68,64 +67,69 @@ include 'php/select2.php';
 
 </style>
 
-<body> 
-   
-    <!-- <img src="/imagem/logo1.png" alt="" align="center"> -->
-  <div class="color" align="center">
-     <h1 align="center">NIMAX</h1>
-  </div>
-    
-   <HR style="background-color: silver;">
-            <div class="alinhar" style="text-align: justify;">
-               <p style="text-align: justify;"><h3>Relatório de Usuários</h3></P>
-            </div>
-    
+<body>
+
+    <div class="color" align="center">
+        <h1 align="center">NIMAX</h1>
+    </div>
+
+    <HR style="background-color: silver;">
+    <div class="alinhar" style="text-align: justify;">
+        <p style="text-align: justify;"><h3>Relatório de Agendas</h3></P>
+    </div>
+
     <table width="95%" border="1px" align="center">
         <thead>
             <tr>
             <th>ID</th>
             <th>Nome</th>
-            <th>Data de Nascimento</th>
-            <th>Gênero</th>
-            <th>CPF</th>
-            <th>CEP</th>
+            <th>Data Marcada</th>
+            <th>Horário Marcado</th>
             </tr>
         </thead>
         <?php
             $sq=
             "
-            select * from cadastro where fk_idProfile=2
+            select * from agenda as p
+            inner join cadastro as cp on cp.IdCadastro = P.fk_cadastro
+            where fk_idProfile=2 
             ";
 
             $qu=mysqli_query($con,$sq);
-            while($cad=  mysqli_fetch_assoc($qu)){
-            ?>
+            while($agen=  mysqli_fetch_assoc($qu)){
+        ?>
+
         <tbody>
             <tr>
-            <td><?php echo $cad['IdCadastro'] ?></td>
-            <td><?php echo $cad['nomeCad'] ?></td>
-            <td>
+                <td><?php echo $agen['IdCadastro'] ?></td>
+                <td><?php echo $agen['nomeCad'] ?></td>
+                <td>
+                
+                    <?php 
+
+                    $dataN = $agen['dataAgenda'];
+                    echo date('d/m/Y', strtotime($dataN));
+
+                    ?>
+            
+                </td>
+                <td>
                 
                 <?php 
 
-                $dataN = $cad['dataN'];
-                echo date('d/m/Y', strtotime($dataN));
+                    $dataN = $agen['dataAgenda'];
+                    echo date('H:i', strtotime($dataN));
 
                 ?>
             
             </td>
-            <td><?php echo $cad['genero'] ?></td>
-            <td><?php echo $cad['cpf'] ?></td>
-            <td><?php echo $cad['cep'] ?></td>
+                    
             </tr>
         </tbody>
+
         <?php } ?>
         <p align="center">2021 - <b>X-MAX</b></p>
     </table>
-<!--     
-    <footer>
-        <p>2021 - <b>X-MAX</b></p>
-    </footer> -->
-    
+
 </body>
 </html>

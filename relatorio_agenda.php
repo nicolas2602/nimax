@@ -11,7 +11,7 @@ require_once 'dompdf/autoload.inc.php';
 $dompdf = new Dompdf(["enable_remote" => true]);
 
  ob_start();
- require __DIR__. "/table_user.php";
+ require __DIR__. "/table_agenda.php";
  $dompdf->loadHtml(ob_get_clean());
 
 

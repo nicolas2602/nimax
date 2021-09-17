@@ -57,12 +57,8 @@
 
                 <div class="card-tools">
                   <div class="input-group input-group-sm" style="width: 150px;">
-                    <input type="text" name="table_search" class="form-control float-right" placeholder="Procurar">
 
                     <div class="input-group-append">
-                      <button type="submit" class="btn btn-default">
-                        <i class="fas fa-search"></i>
-                      </button>
                     </div>
                   </div>
                 </div>
@@ -127,6 +123,11 @@
                   </tbody>
                   <?php } ?>
                 </table>
+              </div>
+              <div class="card-footer clearfix" align="right">
+                <a href="relatorio_agenda.php" class="btn btn-block btn-success btn-sm" style="width: 160px;">
+                <i class="fas fa-download"></i> Baixar Relatório
+                </a>
               </div>
               <!-- /.card-body -->
             </div>
