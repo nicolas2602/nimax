@@ -100,7 +100,11 @@
               <div class="inner">
 
                  <?php 
-                    $sq="SELECT IdLogging FROM logging order by IdLogging";
+                    $sq="SELECT IdLogging FROM logging 
+                    as r 
+                    inner join cadastro as p on P.IdCadastro = r.fk_cadastro
+                    where fk_idProfile=2
+                    order by IdLogging";
                     $qu=mysqli_query($con,$sq);
                     $row=mysqli_num_rows($qu);
                     

@@ -16,14 +16,4 @@ include 'select2.php';
 
     }
 
-    $IdProblema = $_GET['IdProblema'];
-    $data = $_GET['dataProblema'];
-    $desc = $_GET['descProblema'];
-    $msg = $_GET['msgProblema'];
-    $user = $_GET['fk_cadastro'];
-
-    $sqlGetProb="select * from problema where IdProblema=($IdProblema)";
-    $queryProb=mysqli_query($con, $sqlGetProb);
-    $resultProb=mysqli_fetch_assoc($queryProb);
-
 ?> 

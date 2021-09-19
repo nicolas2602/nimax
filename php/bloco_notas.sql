@@ -13,7 +13,9 @@ create table cadastro (
     tel1 varchar(50) not null,
     tel2 varchar(50) not null,  
     email varchar(50) not null, 
-    senha varchar(50) not null
+    senha varchar(50) not null,
+    foto varchar(50) not null,
+    status_user boolean not null
 )
 
  CREATE TABLE empresa_cliente(
@@ -21,7 +23,8 @@ create table cadastro (
  cnpj varchar(50) not null,
  nomeEmpresa varchar(50) not null,
  tservico varchar(50) not null,
- endEmpresa varchar(50) not null,
+ endereco varchar(50) not null,
+ bairro varchar(50) not null,
  cidade_empresa varchar(50) not null,
  estado_empresa varchar(50) not null,
  parceria varchar(50) not null,

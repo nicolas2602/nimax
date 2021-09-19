@@ -2,6 +2,7 @@
     include 'php/conexao.php';
     include 'php/select2.php';
     include 'php/bo_insert.php';
+    include 'php/bo_up.php';
 ?>
 
 <!DOCTYPE html>
@@ -139,21 +140,19 @@
                         ?>
                       </td>
                       <td>
+                                              
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-primary" 
+                        data-whatever="<?php echo $msg['IdProblema'] ?>" data-whateverdata="<?php echo $msg['dataProblema'] ?>"
+                        data-whateverdesc="<?php echo $msg['descProblema'] ?>" data-whatevermsg="<?php echo $msg['msgProblema'] ?>"
+                        data-whateveruser="<?php echo $msg['fk_cadastro'] ?>"> 
+                           <i class="fas fa-pencil-alt"></i>
+                        </button>                     
 
-                      <a href="edit_bo.php?IdProblema=<?php echo $msg['IdProblema'] ?>&dataProblema=<?php echo $msg['dataProblema'] ?>
-                            &descProblema=<?php echo $msg['descProblema'] ?>&msgProblema=<?php echo $msg['msgProblema'] ?>
-                            &fk_cadastro=<?php echo $msg['fk_cadastro'] ?>"
-                            class="btn btn-primary">
-                            <i class="fas fa-pencil-alt"></i>
-                      </a> 
+                          <button class="btn btn-danger" data-toggle="modal" data-target="#modal-danger">                  
+                              <i class="fas fa-trash-alt"></i>
+                          </button>
 
-                          
-                      <a href="del_msg.php?del=<?php echo $msg['IdProblema'] ?>&<?php echo $msg['dataProblema'] ?>
-                            &<?php echo $msg['descProblema'] ?>&<?php echo $msg['msgProblema'] ?>&<?php echo $msg['fk_cadastro'] ?>"
-                            class="btn btn-danger" onclick="return confirm('Deseja apagar a mensagem?')">
-                            <i class="fas fa-trash-alt"></i>
-                      </a> 
-
+                          <?php include 'include/modal_msg_del.php' ?>
 
                       </td>
                       </tr>
@@ -174,6 +173,7 @@
               </div>
               <!-- /.card -->
             </div>
+            <?php include 'include/modal_msg_edit.php' ?>
           </div>
         </div>
     </section>
@@ -205,6 +205,25 @@
 <!-- AdminLTE for demo purposes -->
 <!-- <script src="dist/js/demo.js"></script> -->
 <!-- Page specific script -->
+
+<script type="text/javascript">
+      $('#modal-primary').on('show.bs.modal', function (event) {
+      var button = $(event.relatedTarget) // Button that triggered the modal
+      var recipient = button.data('whatever')
+      var data = button.data('whateverdata')
+      var desc = button.data('whateverdesc')
+      var msg = button.data('whatevermsg')
+
+
+      var modal = $(this)
+      modal.find('.modal-title').text('Editar Mensagem: ')
+      modal.find('#id').val(recipient)
+      modal.find('#bo').val(desc)
+      modal.find('#msg').val(msg)
+      })
+
+</script>
+
 <script>
 $(function () {
   $.validator.setDefaults({

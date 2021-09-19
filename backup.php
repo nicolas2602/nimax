@@ -2,6 +2,8 @@
     include 'php/conexao.php';
     include 'php/select2.php';
     include 'php/insert_backup.php';
+    include 'php/edit_backup.php';  
+    include 'del_backup.php'; 
 ?>
 
 <!DOCTYPE html>
@@ -151,15 +153,20 @@
                       <td><?php echo $arq['arquivoBackup'] ?></td>
                       <td>
                         <a href="<?php echo $arq['arquivoBackup'] ?>" alt="Baixar o arquivo" class="btn btn-success" download><i class="fas fa-download"></i></a>
-                        <a href="up_backup.php?IdBackup=<?php echo $arq['IdBackup'] ?>&dataBackup=<?php echo $arq['dataBackup'] ?>
-                        &nomeBackup<?php echo $arq['nomeBackup'] ?>&arquivoBackup<?php echo $arq['arquivoBackup'] ?>
-                        &fk_IdCadastro=<?php echo $arq['fk_IdCadastro'] ?>" 
-                        name="upBack" alt="Atualizar o nome" class="btn btn-primary"><i class="fas fa-pencil-alt"></i></a href=>
-                         
-                         <a href="exc_backup.php?IdBackup=<?php echo $arq['IdBackup'] ?>&dataBackup=<?php echo $arq['dataBackup'] ?>
-                        &nomeBackup<?php echo $arq['nomeBackup'] ?>&arquivoBackup<?php echo $arq['arquivoBackup'] ?>
-                        &fk_IdCadastro=<?php echo $arq['fk_IdCadastro'] ?>
-                         " alt="Excluir o arquivo" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>
+                        
+                        <button class="btn btn-primary" data-toggle="modal" data-target="#modal-primary" 
+                          data-whatever="<?php echo $arq['IdBackup'] ?>" data-whatevernome="<?php echo $arq['nomeBackup'] ?>"
+                          data-whateverdata="<?php echo $arq['dataBackup'] ?>" data-whateverarq="<?php echo $arq['arquivoBackup'] ?>"
+                          data-whateveruser="<?php echo $arq['fk_IdCadastro'] ?>">                     
+                          <i class="fas fa-pencil-alt"></i>
+                        </button>
+
+                        <button class="btn btn-danger" data-toggle="modal" data-target="#modal-danger" 
+                          data-whatever="<?php echo $arq['IdBackup'] ?>" data-whatevernome="<?php echo $arq['nomeBackup'] ?>"
+                          data-whateverdata="<?php echo $arq['dataBackup'] ?>" data-whateverarq="<?php echo $arq['arquivoBackup'] ?>"
+                          data-whateveruser="<?php echo $arq['fk_IdCadastro'] ?>">                     
+                          <i class="fas fa-trash-alt"></i>
+                        </button>
 
                       </td>
                     </tr>
@@ -171,6 +178,8 @@
             </div>
             <!-- /.card -->
           </div>
+          <?php include 'include/modal_backup_edit.php' ?>
+          <?php include 'include/modal_backup_del.php' ?>
         </div>
        </div>
      </section>
@@ -202,6 +211,46 @@
 <!-- AdminLTE for demo purposes -->
 <!-- <script src="dist/js/demo.js"></script> -->
 <!-- Page specific script -->
+
+<script type="text/javascript">
+ $('#modal-primary').on('show.bs.modal', function (event) {
+      var button = $(event.relatedTarget) // Button that triggered the modal
+      var recipient = button.data('whatever')
+      var nome = button.data('whatevernome')
+      var data = button.data('whateverdata')
+      var arquivo = button.data('whateverarq')
+      var user = button.data('whateveruser')
+
+      var modal = $(this)
+      modal.find('.modal-title').text('Editar o nome:')
+      modal.find('#id').val(recipient)
+      modal.find('#proj').val(nome)
+
+      
+    })
+
+    $('#modal-danger').on('show.bs.modal', function (event) {
+      var button = $(event.relatedTarget) // Button that triggered the modal
+      var recipient = button.data('whatever')
+      var nome = button.data('whatevernome')
+      var data = button.data('whateverdata')
+      var arquivo = button.data('whateverarq')
+      var user = button.data('whateveruser')
+
+      var modal = $(this)
+      modal.find('.modal-title').text('Excluir o arquivo: '+nome)
+      modal.find('#id').val(recipient)
+      modal.find('#data').val(data)      
+      modal.find('#proj').val(nome)
+      modal.find('#arq').val(arquivo)
+      modal.find('#user').val(user)
+
+      
+    })
+
+
+</script>
+
     <script>
 
         $(".custom-file-input").on("change", function() {
@@ -210,56 +259,57 @@
         });
     </script>
 
-<script>
-$(function () {
-  $.validator.setDefaults({
-    submitHandler: function () {
-      alert( "Mensagem enviada com sucesso!" );
-    }
-  });
-  $('#quickForm').validate({
-    rules: {
-      email: {
-        required: true,
-        email: true,
-      },
-      password: {
-        required: true,
-        minlength: 5
-      },
-      terms: {
-        required: true
-      },
-    },
-    messages: {
-      email: {
-        required: "Por favor, digite o nome",
-        email: "Please enter a vaild email address"
-      },
-      password: {
-        required: "Por favor, digite o email",
-        minlength: "Your password must be at least 5 characters long"
-      },
-      terms: "Please accept our terms"
-    },
-    errorElement: 'span',
-    errorPlacement: function (error, element) {
-      error.addClass('invalid-feedback');
-      element.closest('.form-group').append(error);
-    },
-    highlight: function (element, errorClass, validClass) {
-      $(element).addClass('is-invalid');
-    },
-    unhighlight: function (element, errorClass, validClass) {
-      $(element).removeClass('is-invalid');
-    }
-  });
-});
-</script>
-<script>
-$(function () {
-  bsCustomFileInput.init();
-});
-</script>
+    <script>
+      $(function () {
+        $.validator.setDefaults({
+          submitHandler: function () {
+            alert( "Mensagem enviada com sucesso!" );
+          }
+        });
+        $('#quickForm').validate({
+          rules: {
+            email: {
+              required: true,
+              email: true,
+            },
+            password: {
+              required: true,
+              minlength: 5
+            },
+            terms: {
+              required: true
+            },
+          },
+          messages: {
+            email: {
+              required: "Por favor, digite o nome",
+              email: "Please enter a vaild email address"
+            },
+            password: {
+              required: "Por favor, digite o email",
+              minlength: "Your password must be at least 5 characters long"
+            },
+            terms: "Please accept our terms"
+          },
+          errorElement: 'span',
+          errorPlacement: function (error, element) {
+            error.addClass('invalid-feedback');
+            element.closest('.form-group').append(error);
+          },
+          highlight: function (element, errorClass, validClass) {
+            $(element).addClass('is-invalid');
+          },
+          unhighlight: function (element, errorClass, validClass) {
+            $(element).removeClass('is-invalid');
+          }
+        });
+      });
+    </script>
+
+    <script>
+      $(function () {
+        bsCustomFileInput.init();
+      });
+    </script>
 </body>
 </html>

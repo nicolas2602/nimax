@@ -2,6 +2,8 @@
    include 'php/conexao.php'; 
    include 'php/insert2.php'; 
    include 'php/select2.php';
+   include 'php/edit_empresa.php';
+   include 'del_empresa.php';
  
 ?>
 
@@ -218,20 +220,23 @@
                       <td><span class="tag tag-success"><?php echo $emp2['cidade_empresa'] ?></span></td>
                       <td><?php echo $emp2['estado_empresa'] ?></td>
                       <td>
-                          <a href="up_empresa.php?IdEmpresa=<?php echo $emp2['IdEmpresa'] ?>&cnpj=<?php echo $emp2['cnpj'] ?>
-                                  &nomeEmpresa=<?php echo $emp2['nomeEmpresa'] ?>&tservico=<?php echo $emp2['tservico'] ?>&endereco=<?php echo $emp2['endereco'] ?>
-                                  &bairro=<?php echo $emp2['bairro'] ?>&cidade_empresa=<?php echo $emp2['cidade_empresa'] ?>&estado_empresa=<?php echo $emp2['estado_empresa'] ?>
-                                  &parceria=<?php echo $emp2['parceria'] ?>&fk_IdCadastro=<?php $_SESSION['IdCadastro'] ?>" 
-                              class="btn btn-primary mb-2">
-                              <i class="fas fa-pencil-alt"></i>
-                          </a>
-                          <a href="exc_empresa.php?IdEmpresa=<?php echo $emp2['IdEmpresa'] ?>&cnpj=<?php echo $emp2['cnpj'] ?>
-                                  &nomeEmpresa=<?php echo $emp2['nomeEmpresa'] ?>&tservico=<?php echo $emp2['tservico'] ?>&endereco=<?php echo $emp2['endereco'] ?>
-                                  &bairro=<?php echo $emp2['bairro'] ?>&cidade_empresa=<?php echo $emp2['cidade_empresa'] ?>&estado_empresa=<?php echo $emp2['estado_empresa'] ?>
-                                  &parceria=<?php echo $emp2['parceria'] ?>&fk_IdCadastro=<?php echo $emp2['fk_IdCadastro'] ?>" 
-                              class="btn btn-danger mb-2">
-                              <i class="fas fa-trash-alt"></i>
-                          </a>
+                        <button class="btn btn-primary mb-2" data-toggle="modal" data-target="#modal-primary" 
+                          data-whatever="<?php echo $emp2['IdEmpresa'] ?>" data-whatevercnpj="<?php echo $emp2['cnpj'] ?>" data-whatevernome="<?php echo $emp2['nomeEmpresa'] ?>"
+                          data-whateverservico="<?php echo $emp2['tservico'] ?>" data-whateverend="<?php echo $emp2['endereco'] ?>"
+                          data-whateverbairro="<?php echo $emp2['bairro'] ?>" data-whatevercity="<?php echo $emp2['cidade_empresa'] ?>"
+                          data-whateverest="<?php echo $emp2['estado_empresa'] ?>" data-whateverparc="<?php echo $emp2['parceria'] ?>"
+                          data-whateveruser="<?php echo $emp2['fk_IdCadastro'] ?>">                       
+                          <i class="fas fa-pencil-alt"></i>
+                        </button>
+
+                        <button class="btn btn-danger mb-2" data-toggle="modal" data-target="#modal-danger" 
+                          data-whatever="<?php echo $emp2['IdEmpresa'] ?>" data-whatevercnpj="<?php echo $emp2['cnpj'] ?>" data-whatevernome="<?php echo $emp2['nomeEmpresa'] ?>"
+                          data-whateverservico="<?php echo $emp2['tservico'] ?>" data-whateverend="<?php echo $emp2['endereco'] ?>"
+                          data-whateverbairro="<?php echo $emp2['bairro'] ?>" data-whatevercity="<?php echo $emp2['cidade_empresa'] ?>"
+                          data-whateverest="<?php echo $emp2['estado_empresa'] ?>" data-whateverparc="<?php echo $emp2['parceria'] ?>"
+                          data-whateveruser="<?php echo $emp2['fk_IdCadastro'] ?>">                       
+                          <i class="fas fa-trash-alt"></i>
+                        </button>
                       </td>
                     </tr>
                   </tbody>
@@ -242,6 +247,8 @@
             </div>
             <!-- /.card -->
           </div>
+          <?php include 'include/modal_empresa_edit.php' ?>
+          <?php include 'include/modal_empresa_del.php' ?>
         </div>
 
 
@@ -250,7 +257,7 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-  <?php include 'include/footer.php'; ?>
+  <?php include 'include/footer.php'; ?><?php include 'include/script.php' ?>
 
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
@@ -259,12 +266,70 @@
   <!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->
-
+ 
 <!-- jQuery -->
 <script src="plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
 <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
 <script src="dist/js/adminlte.min.js"></script>
+
+
+  <script type="text/javascript">
+    $('#modal-primary').on('show.bs.modal', function (event) {
+      var button = $(event.relatedTarget) // Button that triggered the modal
+      var recipient = button.data('whatever')
+      var cnpj = button.data('whatevercnpj')
+      var nome = button.data('whatevernome')
+      var servico = button.data('whateverservico')
+      var end = button.data('whateverend')
+      var bairro = button.data('whateverbairro')
+      var city = button.data('whatevercity')
+      var estado = button.data('whateverest')
+      var parceria = button.data('whateverparc')
+      var usuário = button.data('whateveruser')
+
+      var modal = $(this)
+      modal.find('.modal-title').text('Atualizar a empresa: ' + recipient)
+      modal.find('#id').val(recipient)
+      modal.find('#cnpj').val(cnpj)
+      modal.find('#name').val(nome)
+      modal.find('#serv').val(servico)
+      modal.find('#end').val(end)
+      modal.find('#bairro').val(bairro)
+      modal.find('#city').val(city)
+      modal.find('#est').val(estado)
+      modal.find('#parc').val(parceria)
+      modal.find('#user').val(usuário)
+      
+    })
+
+    $('#modal-danger').on('show.bs.modal', function (event) {
+      var button = $(event.relatedTarget) // Button that triggered the modal
+      var recipient = button.data('whatever')
+      var cnpj = button.data('whatevercnpj')
+      var nome = button.data('whatevernome')
+      var servico = button.data('whateverservico')
+      var end = button.data('whateverend')
+      var bairro = button.data('whateverbairro')
+      var city = button.data('whatevercity')
+      var estado = button.data('whateverest')
+      var parceria = button.data('whateverparc')
+      var usuário = button.data('whateveruser')
+
+      var modal = $(this)
+      modal.find('.modal-title').text('Excluir a empresa: ' + recipient)
+      modal.find('#id').val(recipient)
+      modal.find('#cnpj').val(cnpj)
+      modal.find('#name').val(nome)
+      modal.find('#serv').val(servico)
+      modal.find('#end').val(end)
+      modal.find('#bairro').val(bairro)
+      modal.find('#city').val(city)
+      modal.find('#est').val(estado)
+      modal.find('#parc').val(parceria)
+      
+    })
+  </script>
 </body>
 </html>

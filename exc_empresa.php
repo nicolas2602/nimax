@@ -39,7 +39,7 @@
                 <input type="hidden" value="<?php echo $resultEmp['IdEmpresa'] ?>" name="id">
                 <input type="hidden" value="<?php echo $resultEmp['cnpj'] ?>" name="cnpj">
                 <div class="row">
-                    <div class="col">
+                    <div class="col"nameEmp
                     <label><i>Nome da empresa</i></label>
                         <div class="input-group mb-2">
                             <span class="input-group-text" id="basic-addon1">

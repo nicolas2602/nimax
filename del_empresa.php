@@ -20,19 +20,4 @@ if(isset($_POST['del'])){
 
 }
 
-$IdEmpresa= $_GET['IdEmpresa'];
-$cnpj= $_GET['cnpj'];
-$name= $_GET['nomeEmpresa'];
-$servic= $_GET['tservico'];
-$ende= $_GET['endereco'];
-$bair= $_GET['bairro'];
-$cidade= $_GET['cidade_empresa'];
-$esta= $_GET['estado_empresa'];
-$parce= $_GET['parceria'];
-$cliente= $_GET['fk_IdCadastro'];
-
-$sqlGetEmp="select * from empresa_cliente where IdEmpresa=($IdEmpresa)";
-$queryEmp=mysqli_query($con, $sqlGetEmp);
-$resultEmp=mysqli_fetch_assoc($queryEmp);
-
 ?>
