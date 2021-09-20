@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 19-Set-2021 às 14:13
+-- Tempo de geração: 20-Set-2021 às 23:29
 -- Versão do servidor: 10.4.19-MariaDB
 -- versão do PHP: 8.0.6
 
@@ -38,7 +38,6 @@ CREATE TABLE `agenda` (
 --
 
 INSERT INTO `agenda` (`IdAgenda`, `fk_cadastro`, `dataAgenda`) VALUES
-(16, 7, '2021-09-23T22:15'),
 (17, 8, '2021-09-30T22:16'),
 (18, 9, '2021-09-30T22:16');
 
@@ -125,7 +124,7 @@ CREATE TABLE `compra` (
 INSERT INTO `compra` (`IdCompra`, `dataCompra`, `fk_IdCadastro`, `fk_IdPagamento`) VALUES
 (1, '2021-09-04 23:00:09', 8, 2),
 (3, '2021-09-05 17:24:02', 9, 5),
-(9, '2021-09-19 08:57:44', 7, 10);
+(10, '2021-09-19 11:42:00', 7, 11);
 
 -- --------------------------------------------------------
 
@@ -151,9 +150,11 @@ CREATE TABLE `empresa_cliente` (
 --
 
 INSERT INTO `empresa_cliente` (`IdEmpresa`, `cnpj`, `nomeEmpresa`, `tservico`, `endereco`, `bairro`, `cidade_empresa`, `estado_empresa`, `parceria`, `fk_IdCadastro`) VALUES
-(24, '98.98.98-98', 'Empresa 2', 'Ecônomica', 'Rua Maria da Piedade Camargo', 'Santo André', 'Hortolândia', 'São Paulo', 'Não', 14),
-(25, '98.98.98-98', 'Empresa 1', 'Alimentícia', 'Rua Alda Lourenço Francisco', 'Remanso Campineiro', 'Hortolândia', 'São Paulo', 'Não', 7),
-(26, '98.98.98-98', 'Empresa 2', 'Ecônomica', 'Rua Maria da Piedade Camargo', 'Santo André', 'Hortolândia', 'São Paulo', 'Não', 7);
+(24, '98.98.98-98', 'Empresa 2', 'Ecônomica', 'xxxxxxxxxxxxx', 'Santo André', 'Hortolândia', 'São Paulo', 'Não', 14),
+(25, '98.98.98-98', 'Empresa 1', 'Alimentícia', 'Rua Maria da Piedade ', 'Remanso Campineiro', 'Hortolândia', 'São Paulo', 'Sim', 7),
+(26, '98.98.98-98', 'Empresa 2', 'Ecônomica', 'Rua Maria da Piedade Camargo', 'Santo André', 'Hortolândia', 'São Paulo', 'Não', 7),
+(28, '98.98.98-98', 'Empresa 3', 'Ecônomica', 'Rua Alda Lourenço Francisco', 'Remanso Campineiro', 'Hortolândia', 'São Paulo', 'Não', 8),
+(29, '98.98.98-98', 'Empresa 1', 'Turismo', 'R Alda Lourenço', 'Remanso Campineiro', 'Campinas', 'São Paulo', 'Não', 8);
 
 -- --------------------------------------------------------
 
@@ -289,7 +290,19 @@ INSERT INTO `logging` (`IdLogging`, `dateLogging`, `level`, `msg`, `fk_cadastro`
 (133, '2021-09-18 16:30:13', 'INFO', '[2021-09-18 16:30:13] [INFO]: Entrou em login\r\n', 7),
 (134, '2021-09-18 20:58:13', 'INFO', '[2021-09-18 20:58:13] [INFO]: Entrou em login\r\n', 7),
 (135, '2021-09-18 20:58:59', 'INFO', '[2021-09-18 20:58:59] [INFO]: Novo empresa\r\n', 7),
-(136, '2021-09-18 20:59:26', 'INFO', '[2021-09-18 20:59:26] [INFO]: Novo empresa\r\n', 7);
+(136, '2021-09-18 20:59:26', 'INFO', '[2021-09-18 20:59:26] [INFO]: Novo empresa\r\n', 7),
+(137, '2021-09-19 09:17:51', 'INFO', '[2021-09-19 09:17:51] [INFO]: Entrou em login\r\n', 7),
+(138, '2021-09-19 11:39:52', 'INFO', '[2021-09-19 11:39:52] [INFO]: Entrou em login\r\n', 7),
+(139, '2021-09-19 11:47:38', 'INFO', '[2021-09-19 11:47:38] [INFO]: Novo empresa\r\n', 7),
+(140, '2021-09-19 11:56:45', 'INFO', '[2021-09-19 11:56:45] [INFO]: Entrou em login\r\n', 7),
+(141, '2021-09-19 14:07:49', 'INFO', '[2021-09-19 14:07:49] [INFO]: Entrou em login\r\n', 7),
+(142, '2021-09-19 19:46:58', 'INFO', '[2021-09-19 19:46:58] [INFO]: Entrou em login\r\n', 7),
+(143, '2021-09-20 11:41:45', 'INFO', '[2021-09-20 11:41:45] [INFO]: Entrou em login\r\n', 7),
+(144, '2021-09-20 12:12:21', 'INFO', '[2021-09-20 12:12:21] [INFO]: Entrou em login\r\n', 7),
+(145, '2021-09-20 12:14:09', 'INFO', '[2021-09-20 12:14:09] [INFO]: Entrou em login\r\n', 8),
+(146, '2021-09-20 12:14:50', 'INFO', '[2021-09-20 12:14:50] [INFO]: Novo empresa\r\n', 8),
+(147, '2021-09-20 12:15:58', 'INFO', '[2021-09-20 12:15:58] [INFO]: Novo empresa\r\n', 8),
+(148, '2021-09-20 12:19:48', 'INFO', '[2021-09-20 12:19:48] [INFO]: Entrou em login\r\n', 7);
 
 -- --------------------------------------------------------
 
@@ -333,7 +346,8 @@ INSERT INTO `paga_pacote` (`IdPagamento`, `formaPag`, `fk_IdPacote`, `fk_IdCadas
 (2, 'Pix', 1, 8),
 (5, 'Cartão de Crédito', 3, 9),
 (9, 'Boleto', 2, 8),
-(10, 'Pix', 2, 7);
+(11, 'Cartão de Crédito', 1, 7),
+(12, 'Cartão de Crédito', 1, 14);
 
 -- --------------------------------------------------------
 
@@ -356,8 +370,9 @@ CREATE TABLE `problema` (
 INSERT INTO `problema` (`IdProblema`, `dataProblema`, `descProblema`, `msgProblema`, `fk_cadastro`) VALUES
 (14, '2021-09-03 20:45:09', 'A tela congelada', 'Meu laptop travou!!', 8),
 (18, '2021-09-08 20:24:03', 'Meu computador pegou vírus', 'Boa noite, meu computador está com mensagem de vírus, vocês poderia verificar, por favor?', 9),
-(19, '2021-09-10 13:41:39', 'Tela azul', 'Meu computador deu tela preta!', 7),
-(23, '2021-09-17 20:24:29', 'Tela azul', 'teste', 14);
+(23, '2021-09-17 20:24:29', 'Tela azul', 'teste', 14),
+(25, '2021-09-19 09:39:31', 'Tela azul', 'Meu computador deu tela azul', 7),
+(26, '2021-09-19 11:46:18', 'Tela azul', 'Meu computador deu ruim', 7);
 
 -- --------------------------------------------------------
 
@@ -460,13 +475,13 @@ ALTER TABLE `profile_cad`
 -- AUTO_INCREMENT de tabela `agenda`
 --
 ALTER TABLE `agenda`
-  MODIFY `IdAgenda` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `IdAgenda` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT de tabela `backup`
 --
 ALTER TABLE `backup`
-  MODIFY `IdBackup` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `IdBackup` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT de tabela `cadastro`
@@ -478,19 +493,19 @@ ALTER TABLE `cadastro`
 -- AUTO_INCREMENT de tabela `compra`
 --
 ALTER TABLE `compra`
-  MODIFY `IdCompra` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `IdCompra` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT de tabela `empresa_cliente`
 --
 ALTER TABLE `empresa_cliente`
-  MODIFY `IdEmpresa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `IdEmpresa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT de tabela `logging`
 --
 ALTER TABLE `logging`
-  MODIFY `IdLogging` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=137;
+  MODIFY `IdLogging` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=149;
 
 --
 -- AUTO_INCREMENT de tabela `pacote`
@@ -502,13 +517,13 @@ ALTER TABLE `pacote`
 -- AUTO_INCREMENT de tabela `paga_pacote`
 --
 ALTER TABLE `paga_pacote`
-  MODIFY `IdPagamento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `IdPagamento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de tabela `problema`
 --
 ALTER TABLE `problema`
-  MODIFY `IdProblema` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `IdProblema` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT de tabela `profile_cad`

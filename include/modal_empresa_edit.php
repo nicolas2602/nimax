@@ -55,8 +55,8 @@
                 </div>
 
                 <div class="row">                   
-                    <div class="col">
-                    <label><i>Endereço</i></label>
+                  <div class="col">
+                       <label><i>Endereço:</i></label>
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="basic-addon1">
@@ -64,10 +64,13 @@
                                         <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
                                     </svg>
                                 </span>
-                            </div>                          
-                            <input class="form-control" type="text" name="ende" value="<?php echo $emp2['endereco'] ?>" id="end" required>
+                            </div>
+                            <input  type="text" name="ende" id="end" class="form-control" required>
                         </div>
                     </div>
+                </div>
+                
+                <div class="row">  
                     <div class="col">
                        <label><i>Bairro</i></label>
                         <div class="input-group mb-3">
