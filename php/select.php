@@ -22,17 +22,8 @@ if(isset($_POST['log'])){
       $_SESSION['IdCadastro']=$f['IdCadastro'];
       $_SESSION['profile']=$f['nameProfile'];
 
-      
-     if($_SESSION['profile'] == 'Admin'){
-        header("location: dashboard.php");
-     }
-     if($_SESSION['profile'] == 'User'){
-
       header("location: profile.php");
       logMsg( "Entrou em login" );
-   }
-
-
    }
 
    else{

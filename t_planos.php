@@ -118,7 +118,7 @@
                       <td><?php echo $stand['formaPag'] ?></td>
                       <td>
                         
-                      <?php 
+                        <?php 
                           if($stand['nomePacote'] == "Standart"){
                              echo "<div class='badge badge-danger'>$stand[nomePacote]</div>";
                           }
@@ -128,7 +128,7 @@
                          if($stand['nomePacote'] == "Premium"){
                           echo "<div class='badge badge-warning right'>$stand[nomePacote]</div>";
                           }
-                          ?>
+                        ?>
                     
                      </td>
                      <td>R$ <?php echo $stand['preco'] ?></td>
@@ -149,7 +149,11 @@
                     <td><strong>R$ <?php echo number_format($total, 2); ?></strong></td>
                 </table>
               </div>
-              <!-- /.card-body -->
+                <div class="card-footer clearfix" align="right">
+                  <a href="relatorio_planos.php" class="btn btn-block btn-success btn-sm" style="width: 160px;">
+                  <i class="fas fa-download"></i> Baixar Relatório
+                  </a>
+                </div>
             </div>
             <!-- /.card -->
           </div>

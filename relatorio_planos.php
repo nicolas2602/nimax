@@ -11,13 +11,13 @@ require_once 'dompdf/autoload.inc.php';
 $dompdf = new Dompdf(["enable_remote" => true]);
 
  ob_start();
- require __DIR__. "/table_agenda.php";
+ require __DIR__. "/table_planos.php";
  $dompdf->loadHtml(ob_get_clean());
 
 
 $dompdf->render();
 $dompdf->stream(
-    "relatório_agenda.pdf",
+    "relatório_planos.pdf",
     array(
         
     //   true = Baixar o Arquivo
