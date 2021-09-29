@@ -21,9 +21,15 @@ if(isset($_POST['log'])){
       $f= mysqli_fetch_assoc($qu);
       $_SESSION['IdCadastro']=$f['IdCadastro'];
       $_SESSION['profile']=$f['nameProfile'];
-
-      header("location: profile.php");
-      logMsg( "Entrou em login" );
+   
+    if($_SESSION['profile'] == "User"){
+        header("location: profile.php");
+        logMsg( "Entrou em login" );
+    }
+    if($_SESSION['profile'] == "Admin"){
+        header("location: dashboard.php");
+    }
+      
    }
 
    else{
